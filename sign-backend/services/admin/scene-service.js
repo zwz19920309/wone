@@ -3,13 +3,14 @@ const sceneModel = require('../../models/admin/scene')
 
 /**
   * 获取场景列表
-  * @method bulkCreate
+  * @method getSceneList
   * @param  {object} params - 参数
+  * @param {object} attrs - 属性数组
   * @return {object} 场景列表
  */
 const getSceneList = async (params, attrs) => {
   let p = params ? { where: params } : {}
-  attrs && (p.attributes = attrs)
+  attrs && attrs.length && (p.attributes = attrs)
   let sceneList = await dbUtil.findAll(sceneModel, p)
   return sceneList
 }

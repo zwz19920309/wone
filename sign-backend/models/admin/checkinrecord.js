@@ -22,13 +22,13 @@ let checkInType = BnSequelize.define('checkin_record', {
   createdAt: {
     type: Sequelize.DATE,
     get () {
-      return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
+      return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updatedAt: {
     type: Sequelize.DATE,
     get () {
-      return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
+      return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss')
     }
   }
 }, {

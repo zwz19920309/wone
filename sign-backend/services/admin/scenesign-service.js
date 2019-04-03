@@ -3,24 +3,25 @@ const scenesignModel = require('../../models/admin/scenesign')
 const sceneModel = require('../../models/admin/scene')
 const signonModel = require('../../models/client/signon')
 /**
-  * 获取签到类型列表
-  * @method bulkCreate
+  * 获取场景签到列表
+  * @method getScenesignList
   * @param  {object} params - 参数
-  * @return {object} 签到类型列表
+  * @param  {object} attrs - 属性数组
+  * @return {object} 场景签到列表
  */
-const getScenesignList = async (params, attrs) => {
+const getScenesignList = async (params, attrs, transaction) => {
   let p = params ? { where: params } : {}
   attrs && (p.attributes = attrs)
   p.include = [ { model: sceneModel }, { model: signonModel } ]
-  let scenesignList = await dbUtil.findAll(scenesignModel, p)
+  let scenesignList = await dbUtil.findAll(scenesignModel, p, transaction)
   return scenesignList
 }
 
 /**
   * 根据id获取具体类型
-  * @method bulkCreate
-  * @param  {string} id - 签到类型id
-  * @return {object} 签到类型
+  * @method getScenesignById
+  * @param  {string} id - 场景签到id
+  * @return {object} 场景签到
  */
 const getScenesignById = async (id, attrs) => {
   let scenesign = await dbUtil.findById(scenesignModel, id, attrs)
@@ -28,32 +29,33 @@ const getScenesignById = async (id, attrs) => {
 }
 
 /**
-  * 增加签到类型
-  * @method bulkCreate
-  * @param  {object} params -签到类型参数
+  * 增加场景签到
+  * @method addScenesign
+  * @param  {object} params -场景签到参数
+  * @param  {object} transaction -事务对象
   * @return {object} 增加结果
  */
 const addScenesign = async (params, transaction) => {
-  let result = await dbUtil.save(scenesignModel, params)
+  let result = await dbUtil.save(scenesignModel, params, transaction)
   return result
 }
 
 /**
-  * 更新签到类型数据
-  * @method bulkCreate
-  * @param  {object} params -签到类型参数
-  * @cons  {object} cons -更新条件
+  * 更新场景签到数据
+  * @method updateScenesign
+  * @param  {object} params -场景签到参数
+  * @cons   {object} cons -更新条件
   * @return {object} 更新结果
  */
 const updateScenesign = async (params, cons, transaction) => {
-  let result = await dbUtil.updateData(scenesignModel, params, cons)
+  let result = await dbUtil.updateData(scenesignModel, params, cons, transaction)
   return result
 }
 
 /**
-  * 删除签到类型数据
-  * @method bulkCreate
-  * @param  {object} params -签到类型参数
+  * 删除场景签到数据
+  * @method deleteScenesign
+  * @param  {object} params -场景签到参数
   * @cons  {object} cons -更新条件
   * @return {object} 更新结果
  */

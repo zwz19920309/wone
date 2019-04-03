@@ -11,5 +11,5 @@ apiRouter.get('/addCheckinrecord', checkinrecordCtrl.addCheckinrecord)
 apiRouter.get('/deleteCheckinrecord', checkinrecordCtrl.deleteCheckinrecord)
 
 module.exports = router => {
-  router.use('/checkinrecord', apiRouter.routes(), apiRouter.allowedMethods())
+  router.use('/admin/checkinrecord', apiRouter.routes(), apiRouter.allowedMethods())
 }

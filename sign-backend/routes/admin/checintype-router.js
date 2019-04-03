@@ -11,5 +11,5 @@ apiRouter.get('/addCheckInType', checkintypeCtrl.addCheckInType)
 apiRouter.get('/deleteCheckInType', checkintypeCtrl.deleteCheckInType)
 
 module.exports = router => {
-  router.use('/checkintype', apiRouter.routes(), apiRouter.allowedMethods())
+  router.use('/admin/checkintype', apiRouter.routes(), apiRouter.allowedMethods())
 }

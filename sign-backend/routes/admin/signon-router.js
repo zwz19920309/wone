@@ -1,5 +1,5 @@
 const apiRouter = require('koa-router')()
-const signonCtrl = require('../../controllers/client/signon-ctrl')
+const signonCtrl = require('../../controllers/admin/signon-ctrl')
 // 签到模板列表
 apiRouter.post('/getSignonList', signonCtrl.getSignonList)
 // 增加签到模板
@@ -10,5 +10,5 @@ apiRouter.get('/deleteSignon', signonCtrl.deleteSignon)
 apiRouter.get('/getSignonById', signonCtrl.getSignonById)
 
 module.exports = router => {
-  router.use('/signon', apiRouter.routes(), apiRouter.allowedMethods())
+  router.use('/admin/signon', apiRouter.routes(), apiRouter.allowedMethods())
 }

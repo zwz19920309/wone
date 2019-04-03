@@ -11,5 +11,5 @@ apiRouter.get('/addDateType', datetypeCtrl.addDateType)
 apiRouter.get('/deleteDateType', datetypeCtrl.deleteDateType)
 
 module.exports = router => {
-  router.use('/datetype', apiRouter.routes(), apiRouter.allowedMethods())
+  router.use('/admin/datetype', apiRouter.routes(), apiRouter.allowedMethods())
 }

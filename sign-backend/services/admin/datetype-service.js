@@ -4,9 +4,9 @@ const datetypeModel = require('../../models/admin/datetype')
 const Op = Sequelize.Op
 /**
   * 获取日期类型列表
-  * @method bulkCreate
+  * @method getDateTypeList
   * @param  {object} params - 参数
-  * @return {object} 日期类型列表
+  * @return {object} attrs - 属性数组
  */
 const getDateTypeList = async (params, attrs) => {
   let p = params ? { where: params } : {}
@@ -17,12 +17,24 @@ const getDateTypeList = async (params, attrs) => {
 
 /**
   * 根据id获取具体类型
-  * @method bulkCreate
+  * @method getDateTypeById
   * @param  {string} id - 日期类型id
   * @return {object} 日期类型
  */
 const getDateTypeById = async (id, attrs) => {
   let dateType = await dbUtil.findById(datetypeModel, id, attrs)
+  return dateType
+}
+
+/**
+  * 根据dateType获取
+  * @method getOneDateTypeByCons
+  * @param  {string} params - 查询条件
+  * @param {object} attrs - 属性数组
+  * @return {object} transaction - 事务对象
+ */
+const getOneDateTypeByCons = async (params, attrs, transaction) => {
+  let dateType = await dbUtil.findOne(datetypeModel, { where: params }, attrs, transaction)
   return dateType
 }
 
@@ -92,5 +104,6 @@ module.exports = {
   addDateType,
   updateDateType,
   deleteDateType,
-  getDateTypeListByType
+  getDateTypeListByType,
+  getOneDateTypeByCons
 }

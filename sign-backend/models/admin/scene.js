@@ -10,18 +10,22 @@ let scene = BnSequelize.define('scene', {
   },
   name: {
     type: Sequelize.STRING(40),
-    comment: '日期类型名称'
+    comment: '场景名称'
+  },
+  desc: {
+    type: Sequelize.STRING(400),
+    comment: '场景描述'
   },
   createdAt: {
     type: Sequelize.DATE,
     get () {
-      return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
+      return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss')
     }
   },
   updatedAt: {
     type: Sequelize.DATE,
     get () {
-      return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
+      return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss')
     }
   }
 }, {

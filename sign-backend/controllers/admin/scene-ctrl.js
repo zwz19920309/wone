@@ -3,7 +3,7 @@ const sceneService = require('../../services/admin/scene-service')
 
 // 获取场景类表
 const getSceneList = async (ctx) => {
-  let sceneList = await sceneService.getSceneList({}, ['name'])
+  let sceneList = await sceneService.getSceneList({}, [])
   console.log('@getsceneList:--------- ')
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: sceneList }, 'SUCCESS')
 }
@@ -16,7 +16,8 @@ const getSceneById = async (ctx) => {
 
 // 增加场景
 const addScene = async (ctx) => {
-  let scene = await sceneService.addScene({ name: '每日签到' })
+  let { desc, name } = ctx.request.body
+  let scene = await sceneService.addScene({ name: name, desc: desc })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, scene, 'SUCCESS')
 }
 

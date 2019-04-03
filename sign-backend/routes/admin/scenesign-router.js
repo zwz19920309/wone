@@ -11,5 +11,5 @@ apiRouter.get('/addScenesign', scenesignCtrl.addScenesign)
 apiRouter.get('/deleteScenesign', scenesignCtrl.deleteScenesign)
 
 module.exports = router => {
-  router.use('/scenesign', apiRouter.routes(), apiRouter.allowedMethods())
+  router.use('/admin/scenesign', apiRouter.routes(), apiRouter.allowedMethods())
 }
