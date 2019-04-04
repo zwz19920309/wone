@@ -3,14 +3,41 @@ const signonModel = require('../../models/client/signon')
 const checkintypeModel = require('../../models/admin/checkintype')
 /**
   * 获取签到模板列表
-  * @method bulkCreate
+  * @method getSignonList
   * @param  {object} params - 参数
   * @return {object} 签到模板列表
  */
-const getSignonList = async (params, attrs) => {
+const getSignonList = async (params, attrs, transaction) => {
   let p = params ? { where: params, include: [ { model: checkintypeModel, attributes: ['name', 'type'] } ] } : {}
   attrs && attrs.length && (p.attributes = attrs)
-  let signonList = await dbUtil.findAll(signonModel, p)
+  let signonList = await dbUtil.findAll(signonModel, p, transaction)
+  return signonList
+}
+
+/**
+  * 获取签到模板列表与统计
+  * @method getSignonListAndCountInclude
+  * @param  {object} params - 参数
+  * @return {object} 签到模板列表
+ */
+const getSignonListAndCountInclude = async (params, attrs, transaction) => {
+  let p = params ? { where: params, include: [ { model: checkintypeModel, attributes: ['name', 'type'] } ] } : {}
+  attrs && attrs.length && (p.attributes = attrs)
+  let signonList = await dbUtil.findAndCountAll(signonModel, p, transaction)
+  return signonList
+}
+
+/**
+  * 获取签到模板列表与统计
+  * @method getSignonListAndCountIncludeByPage
+  * @param  {object} params - 参数
+  * @return {object} 签到模板列表
+ */
+const getSignonListAndCountIncludeByPage = async (params, attrs, pageMsg) => {
+  let pageInfo = pageMsg || { pageSize: 10, page: 1 }
+  let p = params ? { where: params, offset: parseInt((pageInfo.page - 1) * pageInfo.pageSize), limit: parseInt(pageInfo.pageSize), include: [ { model: checkintypeModel, attributes: ['name', 'type'] } ] } : {}
+  attrs && attrs.length && (p.attributes = attrs)
+  let signonList = await dbUtil.findAndCountAll(signonModel, p)
   return signonList
 }
 
@@ -65,5 +92,7 @@ module.exports = {
   getSignonById,
   addSignon,
   upDateSignon,
-  deleteSignon
+  deleteSignon,
+  getSignonListAndCountInclude,
+  getSignonListAndCountIncludeByPage
 }

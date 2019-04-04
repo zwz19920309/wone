@@ -7,9 +7,9 @@ const Op = Sequelize.Op
 
 // 获取签到类型类表
 const getSignonList = async (ctx) => {
-  let signonList = await signonService.getSignonList({}, [])
+  let signonList = await signonService.getSignonListAndCountIncludeByPage({}, [])
   console.log('@getsignonList:--------- ')
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, count: signonList.count }, 'SUCCESS')
 }
 
 // 通过id获取签到类型

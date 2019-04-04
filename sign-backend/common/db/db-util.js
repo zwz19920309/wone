@@ -16,6 +16,22 @@ let findAll = async (Model, params, transaction, isLock) => {
 }
 
 /**
+  * 条件查询数据列表
+  * @method findAll
+  * @param  {object} model - model对象
+  * @param  {object} params - 查询参数
+  * @param  {object} transaction - 事务
+  * @param  {boolean} isLock - 锁
+  * @return {object} sequelize执行结果
+ */
+let findAndCountAll = async (Model, params, transaction, isLock) => {
+  transaction && (params.transaction = transaction)
+  isLock && (params.lock = transaction.UPDATE.LOCK)
+  let result = await Model.findAndCountAll(params)
+  return result
+}
+
+/**
   * 根据id查找数据
   * @param  {object} model - model对象
   * @param  {string} id - 查询id
@@ -221,6 +237,7 @@ let decrement = async (instance, paramsArr, number, transaction) => {
 module.exports = {
   findAll,
   findAndCount,
+  findAndCountAll,
   findById,
   findOne,
   findOrCreate,
