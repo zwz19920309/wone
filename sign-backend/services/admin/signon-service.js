@@ -2,10 +2,10 @@ const dbUtil = require('../../common/db/db-util')
 const signonModel = require('../../models/client/signon')
 const checkintypeModel = require('../../models/admin/checkintype')
 /**
-  * 获取日期类型列表
+  * 获取签到模板列表
   * @method bulkCreate
   * @param  {object} params - 参数
-  * @return {object} 日期类型列表
+  * @return {object} 签到模板列表
  */
 const getSignonList = async (params, attrs) => {
   let p = params ? { where: params, include: [ { model: checkintypeModel, attributes: ['name', 'type'] } ] } : {}
@@ -17,8 +17,8 @@ const getSignonList = async (params, attrs) => {
 /**
   * 根据id获取具体类型
   * @method bulkCreate
-  * @param  {string} id - 日期类型id
-  * @return {object} 日期类型
+  * @param  {string} id - 签到模板id
+  * @return {object} 签到模板
  */
 const getSignonById = async (id, attrs) => {
   let signon = await dbUtil.findById(signonModel, id, attrs)
@@ -26,9 +26,9 @@ const getSignonById = async (id, attrs) => {
 }
 
 /**
-  * 增加日期类型
+  * 增加签到模板
   * @method bulkCreate
-  * @param  {object} params -日期类型参数
+  * @param  {object} params -签到模板参数
   * @return {object} 增加结果
  */
 const addSignon = async (params, transaction) => {
@@ -37,9 +37,9 @@ const addSignon = async (params, transaction) => {
 }
 
 /**
-  * 更新日期类型数据
+  * 更新签到模板数据
   * @method bulkCreate
-  * @param  {object} params -日期类型参数
+  * @param  {object} params -签到模板参数
   * @cons  {object} cons -更新条件
   * @return {object} 更新结果
  */
@@ -49,9 +49,9 @@ const upDateSignon = async (params, cons, transaction) => {
 }
 
 /**
-  * 删除日期类型数据
+  * 删除签到模板数据
   * @method bulkCreate
-  * @param  {object} params -日期类型参数
+  * @param  {object} params -签到模板参数
   * @cons  {object} cons -更新条件
   * @return {object} 更新结果
  */

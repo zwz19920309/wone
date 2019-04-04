@@ -8,7 +8,8 @@ apiRouter.post('/addSignon', signonCtrl.addSignon)
 apiRouter.get('/deleteSignon', signonCtrl.deleteSignon)
 // 根据id获取模板
 apiRouter.get('/getSignonById', signonCtrl.getSignonById)
-
+// 获取场景签到活动数据
+apiRouter.post('/getSignonListBySceneId', signonCtrl.getSignonListBySceneId)
 module.exports = router => {
   router.use('/admin/signon', apiRouter.routes(), apiRouter.allowedMethods())
 }

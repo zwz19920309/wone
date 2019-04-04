@@ -11,7 +11,21 @@ const signonModel = require('../../models/client/signon')
  */
 const getScenesignList = async (params, attrs, transaction) => {
   let p = params ? { where: params } : {}
-  attrs && (p.attributes = attrs)
+  attrs && attrs.length && (p.attributes = attrs)
+  let scenesignList = await dbUtil.findAll(scenesignModel, p, transaction)
+  return scenesignList
+}
+
+/**
+  * 获取场景签到列表
+  * @method getScenesignList
+  * @param  {object} params - 参数
+  * @param  {object} attrs - 属性数组
+  * @return {object} 场景签到列表
+ */
+const getScenesignListInclude = async (params, attrs, transaction) => {
+  let p = params ? { where: params } : {}
+  attrs && attrs.length && (p.attributes = attrs)
   p.include = [ { model: sceneModel }, { model: signonModel } ]
   let scenesignList = await dbUtil.findAll(scenesignModel, p, transaction)
   return scenesignList
@@ -64,10 +78,24 @@ const deleteScenesign = async (params, transaction) => {
   return result
 }
 
+/**
+  * 批量增加签到数据
+  * @method deleteScenesign
+  * @param  {Array} params -场景签到参数数组
+  * @cons  {object} cons -更新条件
+  * @return {object} 更新结果
+ */
+const bulkCreateScenesign = async (params, transaction) => {
+  let result = await dbUtil.bulkCreate(scenesignModel, params, transaction)
+  return result
+}
+
 module.exports = {
   getScenesignList,
   getScenesignById,
   addScenesign,
+  bulkCreateScenesign,
   updateScenesign,
-  deleteScenesign
+  deleteScenesign,
+  getScenesignListInclude
 }
