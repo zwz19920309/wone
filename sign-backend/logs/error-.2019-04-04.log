@@ -887,3 +887,233 @@ err stack: SequelizeDatabaseError: Unknown column 'signon.sence_id' in 'where cl
 [2019-04-04T17:41:44.914] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
 [2019-04-04T17:41:44.916] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
 [2019-04-04T17:41:44.916] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:45:18.282] [ERROR] error - (node:10984) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-04T21:45:18.312] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:45:18.313] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:45:18.442] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:45:18.442] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:12.305] [ERROR] error - (node:11204) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-04T21:46:12.387] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:12.387] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:12.836] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:12.836] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:19.971] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:19.971] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:19.973] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:19.973] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:19.987] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/getSceneList
+request client ip:  ::1
+request body: 
+{}
+response time: 40
+err name: SequelizeDatabaseError
+err message: Unknown column 'desc' in 'field list'
+err stack: SequelizeDatabaseError: Unknown column 'desc' in 'field list'
+    at Query.formatError (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:250:16)
+    at Query.handler [as onResult] (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:57:23)
+    at Query.execute (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:449:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:72:12)
+    at PacketParser.executeStart (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:79:25)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    at Socket.Readable.push (_stream_readable.js:211:10)
+    at TCP.onread (net.js:585:20)
+*************** error log end ***************
+
+[2019-04-04T21:46:20.019] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 58
+err name: SequelizeDatabaseError
+err message: Unknown column 'signon.name' in 'field list'
+err stack: SequelizeDatabaseError: Unknown column 'signon.name' in 'field list'
+    at Query.formatError (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:250:16)
+    at Query.handler [as onResult] (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:57:23)
+    at Query.execute (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:449:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:72:12)
+    at PacketParser.executeStart (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:79:25)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    at Socket.Readable.push (_stream_readable.js:211:10)
+    at TCP.onread (net.js:585:20)
+*************** error log end ***************
+
+[2019-04-04T21:46:37.776] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:37.776] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:37.800] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"每日电台","desc":"测试"}
+response time: 38
+err name: SequelizeDatabaseError
+err message: Unknown column 'desc' in 'field list'
+err stack: SequelizeDatabaseError: Unknown column 'desc' in 'field list'
+    at Query.formatError (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:250:16)
+    at handler (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:57:23)
+    at Prepare.Commands.Prepare [as onResult] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:636:11)
+    at Prepare.execute (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:449:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:72:12)
+    at PacketParser.executeStart (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:79:25)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    at Socket.Readable.push (_stream_readable.js:211:10)
+    at TCP.onread (net.js:585:20)
+*************** error log end ***************
+
+[2019-04-04T21:46:40.792] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/getSceneList
+request client ip:  ::1
+request body: 
+{}
+response time: 6
+err name: SequelizeDatabaseError
+err message: Unknown column 'desc' in 'field list'
+err stack: SequelizeDatabaseError: Unknown column 'desc' in 'field list'
+    at Query.formatError (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:250:16)
+    at Query.handler [as onResult] (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:57:23)
+    at Query.execute (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:449:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:72:12)
+    at PacketParser.executeStart (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:79:25)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    at Socket.Readable.push (_stream_readable.js:211:10)
+    at TCP.onread (net.js:585:20)
+*************** error log end ***************
+
+[2019-04-04T21:46:40.801] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:40.801] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:40.815] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 19
+err name: SequelizeDatabaseError
+err message: Unknown column 'signon.checkintype_id' in 'on clause'
+err stack: SequelizeDatabaseError: Unknown column 'signon.checkintype_id' in 'on clause'
+    at Query.formatError (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:250:16)
+    at Query.handler [as onResult] (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:57:23)
+    at Query.execute (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:449:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:72:12)
+    at PacketParser.executeStart (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:79:25)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    at Socket.Readable.push (_stream_readable.js:211:10)
+    at TCP.onread (net.js:585:20)
+*************** error log end ***************
+
+[2019-04-04T21:46:54.889] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:54.889] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:46:54.913] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"测试","desc":"测试"}
+response time: 29
+err name: SequelizeDatabaseError
+err message: Unknown column 'desc' in 'field list'
+err stack: SequelizeDatabaseError: Unknown column 'desc' in 'field list'
+    at Query.formatError (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:250:16)
+    at handler (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:57:23)
+    at Prepare.Commands.Prepare [as onResult] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:636:11)
+    at Prepare.execute (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:449:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:72:12)
+    at PacketParser.executeStart (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:79:25)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    at Socket.Readable.push (_stream_readable.js:211:10)
+    at TCP.onread (net.js:585:20)
+*************** error log end ***************
+
+[2019-04-04T21:50:01.306] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:50:01.307] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:50:01.327] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"测试","desc":"测试"}
+response time: 23
+err name: SequelizeDatabaseError
+err message: Table 'app.scene' doesn't exist
+err stack: SequelizeDatabaseError: Table 'app.scene' doesn't exist
+    at Query.formatError (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:250:16)
+    at handler (d:\jin11\sign\sign-backend\node_modules\sequelize\lib\dialects\mysql\query.js:57:23)
+    at Prepare.Commands.Prepare [as onResult] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:636:11)
+    at Prepare.execute (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\commands\command.js:30:14)
+    at Connection.handlePacket (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:449:32)
+    at PacketParser.Connection.packetParser.p [as onPacket] (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:72:12)
+    at PacketParser.executeStart (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.Connection.stream.on.data (d:\jin11\sign\sign-backend\node_modules\mysql2\lib\connection.js:79:25)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    at Socket.Readable.push (_stream_readable.js:211:10)
+    at TCP.onread (net.js:585:20)
+*************** error log end ***************
+
+[2019-04-04T21:51:09.813] [ERROR] error - (node:8764) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-04T21:51:09.843] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:51:09.843] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:51:10.006] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:51:10.007] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:51:33.689] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:51:33.689] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:51:36.965] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:51:36.966] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:55:32.516] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:55:32.517] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:55:48.692] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:55:48.692] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:55:58.465] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T21:55:58.465] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:31:04.565] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:31:04.566] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:36:25.807] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:36:25.807] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:50:58.031] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:50:58.032] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:50:58.033] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-04T22:50:58.033] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection

@@ -1,5 +1,3 @@
-const dbUtil = require('../../common/db/db-util')
-const checkinrecordModel = require('../../models/admin/checkinrecord')
 
 /**
   * 获取签到记录列表
@@ -8,10 +6,6 @@ const checkinrecordModel = require('../../models/admin/checkinrecord')
   * @return {object} 签到记录列表
  */
 const getCheckinrecordList = async (params, attrs) => {
-  let p = params ? { where: params } : {}
-  attrs && attrs.length && (p.attributes = attrs)
-  let checkinrecordList = await dbUtil.findAll(checkinrecordModel, p)
-  return checkinrecordList
 }
 
 /**
@@ -21,8 +15,6 @@ const getCheckinrecordList = async (params, attrs) => {
   * @return {object} 签到记录
  */
 const getCheckinrecordById = async (id, attrs) => {
-  let checkinrecord = await dbUtil.findById(checkinrecordModel, id, attrs)
-  return checkinrecord
 }
 
 /**
@@ -32,8 +24,6 @@ const getCheckinrecordById = async (id, attrs) => {
   * @return {object} 增加结果
  */
 const addCheckinrecord = async (params, transaction) => {
-  let result = await dbUtil.save(checkinrecordModel, params)
-  return result
 }
 
 /**
@@ -44,8 +34,6 @@ const addCheckinrecord = async (params, transaction) => {
   * @return {object} 更新结果
  */
 const updateCheckinrecord = async (params, cons, transaction) => {
-  let result = await dbUtil.updateData(checkinrecordModel, params, cons)
-  return result
 }
 
 /**
@@ -56,8 +44,6 @@ const updateCheckinrecord = async (params, cons, transaction) => {
   * @return {object} 更新结果
  */
 const deleteCheckinrecord = async (params, transaction) => {
-  let result = await dbUtil.deleteByCons(checkinrecordModel, { where: params }, transaction)
-  return result
 }
 
 module.exports = {

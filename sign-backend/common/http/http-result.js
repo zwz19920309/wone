@@ -1,6 +1,6 @@
 const HttpStatus = {
-  SUCCESS: 0, // 返回成功
-  FAIL: -1, // 返回失败
+  SUCCESS: 200, // 返回成功
+  FAIL: 503, // 返回失败
   EMPTY: -2, // 数据为空
   EXCEPTION: -3, // 程序异常
   ERROR_DB: 11, // 数据库请求异常
@@ -11,11 +11,10 @@ const HttpStatus = {
   WECHAT_INVALID_CODE: 21 // 微信登录 code 无效
 }
 
-const response = (code, result, msg, status) => {
+const response = (status, result, msg) => {
   return {
     status: status || 0,
-    code: code || 0,
-    msg: msg || '',
+    message: msg || '',
     data: result || {}
   }
 }

@@ -1,0 +1,338 @@
+[2019-04-13T16:12:05.633] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 82
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:25:43.413] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 32
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:25:46.557] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 13
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:25:57.248] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 33
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:25:59.820] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 13
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:26:13.438] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 36
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:26:17.769] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 14
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:26:32.740] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 30
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:26:38.779] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 17
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:26:40.663] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 12
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:26:42.295] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 14
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:26:47.304] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 19
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:29:39.107] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 36
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:29:43.561] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 15
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:29:58.030] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 31
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T16:30:04.370] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 16
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:40:05.604] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 24
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:40:13.582] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 15
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:40:41.248] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 30
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:41:13.571] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 26
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:41:16.671] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 24
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:41:25.409] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 25
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:42:58.083] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 37
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:43:12.090] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 31
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:43:47.279] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 33
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-13T18:43:51.228] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 23
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":5,"name":"自定义","number":"18"},"prizes_text":{"prizes":[{"1":["1","2","3","4","5","1"],"2":["2","3","4","5"],"3":["1","1"],"4":["2"],"5":["4"],"6":["3","1","2","4","5","1","2","3","4","5","3","4","5"],"9":["3","4","5"]}]},"extra_text":{},"rule":{},"start_at":"2019-04-24","end_at":"2019-05-29","createdAt":"2019-04-09 21:42:05","updatedAt":"2019-04-10 21:59:07","id":"1","name":"连续签到领取红包","rule_desc":"连续签到领取红包","checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}}],"count":1}}
+*************** response log end ***************
+

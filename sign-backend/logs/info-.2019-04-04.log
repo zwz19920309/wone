@@ -10242,3 +10242,354 @@ response body:
 {"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":1,"name":"日","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-25","end_at":"2019-05-31","createdAt":"2019-04-04 10:01:56","updatedAt":"2019-04-04 10:01:56","id":"2","name":"每日签到领取积分","rule_desc":null,"checkintype_id":"1","checkin_type":{"name":"每日签到","type":1}},{"cycle_text":{"type":5,"name":"自定义","number":"30"},"extra_text":{},"rule":{},"start_at":"2019-04-30","end_at":"2019-05-31","createdAt":"2019-04-04 10:00:48","updatedAt":"2019-04-04 10:00:48","id":"1","name":"连续签到赢奖金","rule_desc":null,"checkintype_id":"2","checkin_type":{"name":"连续签到","type":2}},{"cycle_text":{"type":5,"name":"自定义","number":"15"},"extra_text":{},"rule":{},"start_at":"2019-04-25","end_at":"2019-05-31","createdAt":"2019-04-04 17:06:02","updatedAt":"2019-04-04 17:06:02","id":"4","name":"累计15天签到领取大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}],"count":3}}
 *************** response log end ***************
 
+[2019-04-04T21:51:33.783] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"测试","desc":"测试"}
+response time: 117
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"createdAt":"2019-04-04 21:51:33","updatedAt":"2019-04-04 21:51:33","id":1,"name":"测试","desc":"测试"}}
+*************** response log end ***************
+
+[2019-04-04T21:51:36.969] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/getSceneList
+request client ip:  ::1
+request body: 
+{}
+response time: 34
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"createdAt":"2019-04-04 21:51:33","updatedAt":"2019-04-04 21:51:33","id":"1","name":"测试","desc":"测试"}]}}
+*************** response log end ***************
+
+[2019-04-04T21:51:37.115] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 163
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[],"count":0}}
+*************** response log end ***************
+
+[2019-04-04T21:51:40.271] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":1}
+response time: 52
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[]}}
+*************** response log end ***************
+
+[2019-04-04T21:51:43.543] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 16
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[],"count":0}}
+*************** response log end ***************
+
+[2019-04-04T21:51:45.342] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 15
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[]}}
+*************** response log end ***************
+
+[2019-04-04T21:51:45.446] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/datetype/getDateTypeList
+request client ip:  ::1
+request body: 
+{"type":0}
+response time: 31
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[]}}
+*************** response log end ***************
+
+[2019-04-04T21:55:32.566] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 51
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"createdAt":"2019-04-05 05:52:52","updatedAt":"2019-04-05 05:52:55","id":"1","type":1,"name":"每日签到"},{"createdAt":"2019-04-05 05:53:11","updatedAt":"2019-04-05 05:53:15","id":"2","type":2,"name":"连续签到"},{"createdAt":"2019-04-05 05:53:34","updatedAt":"2019-04-05 05:53:37","id":"3","type":3,"name":"累计签到"}]}}
+*************** response log end ***************
+
+[2019-04-04T21:55:32.634] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/datetype/getDateTypeList
+request client ip:  ::1
+request body: 
+{"type":0}
+response time: 32
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[]}}
+*************** response log end ***************
+
+[2019-04-04T21:55:48.728] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/datetype/getDateTypeList
+request client ip:  ::1
+request body: 
+{"type":3}
+response time: 37
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"createdAt":"2019-04-05 05:54:36","updatedAt":"2019-04-05 05:54:33","id":"2","type":2,"name":"周"},{"createdAt":"2019-04-05 05:54:40","updatedAt":"2019-04-05 05:54:33","id":"3","type":3,"name":"月"},{"createdAt":"2019-04-05 05:54:43","updatedAt":"2019-04-05 05:54:33","id":"4","type":4,"name":"年"},{"createdAt":"2019-04-05 05:54:46","updatedAt":"2019-04-05 05:54:33","id":"5","type":5,"name":"自定义"}]}}
+*************** response log end ***************
+
+[2019-04-04T21:55:55.540] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/addSignon
+request client ip:  ::1
+request body: 
+{"checkinType":3,"dateType":3,"startAt":"2019-04-09","endAt":"2019-05-05","number":0,"name":"每日签到领大礼包"}
+response time: 92
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":1,"name":"每日签到领大礼包","checkintype_id":3}}
+*************** response log end ***************
+
+[2019-04-04T21:55:58.483] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 22
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-04T21:56:01.859] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/getSceneList
+request client ip:  ::1
+request body: 
+{}
+response time: 8
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"createdAt":"2019-04-04 21:51:33","updatedAt":"2019-04-04 21:51:33","id":"1","name":"测试","desc":"测试"}]}}
+*************** response log end ***************
+
+[2019-04-04T21:56:01.897] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 16
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-04T21:56:03.114] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":1}
+response time: 24
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}]}}
+*************** response log end ***************
+
+[2019-04-04T22:31:04.602] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":1}
+response time: 40
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}]}}
+*************** response log end ***************
+
+[2019-04-04T22:36:25.837] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":2}
+response time: 31
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[]}}
+*************** response log end ***************
+
+[2019-04-04T22:36:27.351] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":1}
+response time: 14
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}]}}
+*************** response log end ***************
+
+[2019-04-04T22:36:30.478] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scenesign/bulkAddScenesign
+request client ip:  ::1
+request body: 
+{"scenesignons":[{"signon_id":"1","scene_id":"1"}]}
+response time: 60
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":[{"createdAt":"2019-04-04 22:36:30","updatedAt":"2019-04-04 22:36:30","id":1,"scene_id":"1","signon_id":"1"}]}
+*************** response log end ***************
+
+[2019-04-04T22:36:32.205] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":2}
+response time: 18
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}]}}
+*************** response log end ***************
+
+[2019-04-04T22:50:58.054] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 25
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-04T22:50:59.275] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 7
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"createdAt":"2019-04-05 05:52:52","updatedAt":"2019-04-05 05:52:55","id":"1","type":1,"name":"每日签到"},{"createdAt":"2019-04-05 05:53:11","updatedAt":"2019-04-05 05:53:15","id":"2","type":2,"name":"连续签到"},{"createdAt":"2019-04-05 05:53:34","updatedAt":"2019-04-05 05:53:37","id":"3","type":3,"name":"累计签到"}]}}
+*************** response log end ***************
+
+[2019-04-04T22:50:59.295] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/datetype/getDateTypeList
+request client ip:  ::1
+request body: 
+{"type":0}
+response time: 11
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[]}}
+*************** response log end ***************
+
+[2019-04-04T22:51:01.635] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 18
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}],"count":1}}
+*************** response log end ***************
+
+[2019-04-04T22:51:01.691] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/getSceneList
+request client ip:  ::1
+request body: 
+{}
+response time: 6
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"createdAt":"2019-04-04 21:51:33","updatedAt":"2019-04-04 21:51:33","id":"1","name":"测试","desc":"测试"}]}}
+*************** response log end ***************
+
+[2019-04-04T22:51:07.705] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":1}
+response time: 31
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[]}}
+*************** response log end ***************
+
+[2019-04-04T22:51:09.585] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonListBySceneId
+request client ip:  ::1
+request body: 
+{"sceneId":"1","type":2}
+response time: 32
+response status: 200
+response body: 
+{"status":0,"code":0,"msg":"SUCCESS","data":{"list":[{"cycle_text":{"type":3,"name":"月","number":0},"extra_text":{},"rule":{},"start_at":"2019-04-09","end_at":"2019-05-05","createdAt":"2019-04-04 21:55:55","updatedAt":"2019-04-04 21:55:55","id":"1","name":"每日签到领大礼包","rule_desc":null,"checkintype_id":"3","checkin_type":{"name":"累计签到","type":3}}]}}
+*************** response log end ***************
+

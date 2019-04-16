@@ -1,4 +1,4 @@
-require('./models')
+// require('./models')
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -44,8 +44,7 @@ app.use(async (ctx, next) => {
     let ms = new Date() - start
     // 记录异常日志
     console.log(error)
-    // logUtil.logError(ctx, error, ms)
-    ctx.response.body = logUtil.logError(ctx, error, ms)
+    ctx.throw(503, logUtil.logError(ctx, error, ms))
   }
 })
 
