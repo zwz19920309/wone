@@ -1,0 +1,1433 @@
+[2019-04-16T10:00:37.972] [ERROR] error - (node:24572) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:00:37.985] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:00:37.985] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:00:45.266] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:00:45.266] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:05:29.788] [ERROR] error - (node:26388) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:05:29.803] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:05:29.803] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:05:32.074] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:05:32.074] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:05:40.978] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 15
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:91:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:05:42.735] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 1
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getCheckInTypeList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:12:31)
+    at Object.getCheckInTypeList (d:\jin10\sign\sign\sign-backend\services\admin\checkintype-service.js:9:40)
+    at getCheckInTypeList (d:\jin10\sign\sign\sign-backend\controllers\admin\checkintype-ctrl.js:6:50)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:05:42.739] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/datetype/getDateTypeList
+request client ip:  ::1
+request body: 
+{"type":0}
+response time: 1
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getDateTypeList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:35:31)
+    at Object.getDateTypeList (d:\jin10\sign\sign\sign-backend\services\admin\datetype-service.js:11:37)
+    at getDateTypeList (d:\jin10\sign\sign\sign-backend\controllers\admin\datetype-ctrl.js:10:42)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:05:45.704] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/getSceneList
+request client ip:  ::1
+request body: 
+{}
+response time: 1
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSceneList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:71:31)
+    at Object.getSceneList (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:9:34)
+    at getSceneList (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:8:38)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:05:45.709] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 1
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:91:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:05:56.597] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/getSceneList
+request client ip:  ::1
+request body: 
+{}
+response time: 1
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSceneList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:71:31)
+    at Object.getSceneList (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:9:34)
+    at getSceneList (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:8:38)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:05:56.622] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{}
+response time: 1
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:91:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:08:53.349] [ERROR] error - (node:26564) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:08:53.359] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:08:53.359] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:08:56.112] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:08:56.113] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:09:20.587] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 13
+err name: Error
+err message: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+err stack: Error: getaddrinfo ENOTFOUND 127.0.0.1 127.0.0.1:3306
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:91:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:10:16.623] [ERROR] error - (node:23384) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:10:16.633] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:16.633] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:18.576] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:18.576] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:43.916] [ERROR] error - (node:13100) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:10:43.926] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:43.926] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:47.817] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:47.818] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:10:52.096] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 10
+err name: Error
+err message: Incorrect database name 'app'
+err stack: Error: Incorrect database name 'app'
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:91:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:11:56.752] [ERROR] error - (node:17432) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:11:56.766] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:11:56.766] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:11:59.577] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:11:59.577] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:12:08.313] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 7
+err name: Error
+err message: Incorrect database name 'app'
+err stack: Error: Incorrect database name 'app'
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:94:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:12:47.869] [ERROR] error - (node:8648) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:12:47.879] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:12:47.879] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:12:49.800] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:12:49.801] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:18.882] [ERROR] error - (node:23336) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:14:18.892] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:18.892] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:23.283] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:23.283] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:45.680] [ERROR] error - (node:24312) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:14:45.692] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:45.693] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:47.349] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:47.349] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:14:54.256] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 9
+err name: Error
+err message: Incorrect database name 'app'
+err stack: Error: Incorrect database name 'app'
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:94:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:15:49.316] [ERROR] error - (node:26496) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:15:49.325] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:15:49.325] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:15:55.713] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:15:55.713] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:17:38.988] [ERROR] error - (node:15288) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:17:38.998] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:17:38.998] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:17:41.169] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:17:41.169] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:18:14.186] [ERROR] error - (node:11592) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:18:14.196] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:18:14.196] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:18:22.188] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:18:22.188] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:19:01.504] [ERROR] error - (node:25472) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:19:01.514] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:19:01.514] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:19:04.639] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:19:04.639] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:22:59.752] [ERROR] error - (node:14404) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:26:26.989] [ERROR] error - (node:18124) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:27:06.631] [ERROR] error - (node:18528) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:27:50.695] [ERROR] error - (node:17944) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:27:50.707] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:27:50.707] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:27:58.400] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:27:58.400] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:28:48.449] [ERROR] error - (node:11840) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:28:48.460] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:28:48.461] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:28:57.191] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:28:57.191] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:31:14.824] [ERROR] error - (node:10096) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:31:14.837] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:31:14.837] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:31:20.125] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:31:20.125] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:31:44.933] [ERROR] error - (node:7692) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:32:12.907] [ERROR] error - (node:20252) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:32:12.917] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:32:12.917] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:32:15.827] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:32:15.828] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:33:14.376] [ERROR] error - (node:19528) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:33:14.386] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:33:14.386] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:38:49.255] [ERROR] error - (node:5152) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:38:49.266] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:38:49.266] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:38:52.720] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:38:52.720] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:39:50.969] [ERROR] error - (node:14256) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:39:50.982] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:39:50.982] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:39:58.626] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:39:58.627] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:40:07.275] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/datetype/getDateTypeList
+request client ip:  ::1
+request body: 
+{"type":0}
+response time: 7
+err name: Error
+err message: Access denied for user ''@'localhost' (using password: YES)
+err stack: Error: Access denied for user ''@'localhost' (using password: YES)
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getDateTypeList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:36:31)
+    at Object.getDateTypeList (d:\jin10\sign\sign\sign-backend\services\admin\datetype-service.js:11:37)
+    at getDateTypeList (d:\jin10\sign\sign\sign-backend\controllers\admin\datetype-ctrl.js:10:42)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:40:07.278] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 28
+err name: Error
+err message: Access denied for user ''@'localhost' (using password: YES)
+err stack: Error: Access denied for user ''@'localhost' (using password: YES)
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getCheckInTypeList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:13:31)
+    at Object.getCheckInTypeList (d:\jin10\sign\sign\sign-backend\services\admin\checkintype-service.js:9:40)
+    at getCheckInTypeList (d:\jin10\sign\sign\sign-backend\controllers\admin\checkintype-ctrl.js:6:50)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:40:07.792] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 5
+err name: Error
+err message: Access denied for user ''@'localhost' (using password: YES)
+err stack: Error: Access denied for user ''@'localhost' (using password: YES)
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.getSignonList (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:92:31)
+    at Object.getSignonList (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:9:35)
+    at getSignonList (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:11:40)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T10:41:30.778] [ERROR] error - (node:5212) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:41:30.788] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:41:30.788] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:41:36.700] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:41:36.700] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:46:10.602] [ERROR] error - (node:24528) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log
+[2019-04-16T10:46:10.614] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:46:10.615] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:46:13.783] [ERROR] error - Ignoring invalid configuration option passed to Connection: collate. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T10:46:13.783] [ERROR] error - Ignoring invalid configuration option passed to Connection: requestTimeout. This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration options to a Connection
+[2019-04-16T11:16:59.241] [ERROR] error - server error TypeError: ctx.response.status is not a function
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:49:18)
+    at process._tickCallback (internal/process/next_tick.js:68:7) { request:
+   { method: 'POST',
+     url: '/bonus/admin/checkintype/getCheckInTypeList',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '2',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/checkintype/getCheckInTypeList',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T11:18:12.432] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 2
+err name: undefined
+err message: undefined
+err stack: undefined
+*************** error log end ***************
+
+[2019-04-16T11:18:35.537] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 0
+err name: undefined
+err message: undefined
+err stack: undefined
+*************** error log end ***************
+
+[2019-04-16T11:21:33.995] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 5
+err name: undefined
+err message: undefined
+err stack: undefined
+*************** error log end ***************
+
+[2019-04-16T11:21:33.997] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 5
+err name: undefined
+err message: undefined
+err stack: undefined
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:49:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/checkintype/getCheckInTypeList\nrequest client ip:  ::1\nrequest body: \n{}\nresponse time: 5\nerr name: undefined\nerr message: undefined\nerr stack: undefined\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/checkintype/getCheckInTypeList',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '2',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/checkintype/getCheckInTypeList',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T11:27:54.748] [ERROR] error - server error { ServiceUnavailableError: 13123213123123
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:49:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7) message: '13123213123123' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/checkintype/getCheckInTypeList',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '2',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/checkintype/getCheckInTypeList',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T11:28:58.630] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 6
+err name: undefined
+err message: undefined
+err stack: undefined
+*************** error log end ***************
+
+[2019-04-16T11:29:19.474] [ERROR] error - server error { ServiceUnavailableError: 13123213123123
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:50:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7) message: '13123213123123' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/checkintype/getCheckInTypeList',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '2',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/checkintype/getCheckInTypeList',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T11:30:01.502] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 6
+err name: TypeError
+err message: addCheckInType.substr is not a function
+err stack: TypeError: addCheckInType.substr is not a function
+    at getCheckInTypeList (d:\jin10\sign\sign\sign-backend\controllers\admin\checkintype-ctrl.js:6:18)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T11:30:07.998] [ERROR] error - server error { ServiceUnavailableError: 13123213123123
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:50:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7) message: '13123213123123' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/checkintype/getCheckInTypeList',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '2',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/checkintype/getCheckInTypeList',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T11:30:44.554] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 5
+err name: TypeError
+err message: addCheckInType.substr is not a function
+err stack: TypeError: addCheckInType.substr is not a function
+    at getCheckInTypeList (d:\jin10\sign\sign\sign-backend\controllers\admin\checkintype-ctrl.js:6:18)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T11:30:44.556] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/checkintype/getCheckInTypeList
+request client ip:  ::1
+request body: 
+{}
+response time: 5
+err name: TypeError
+err message: addCheckInType.substr is not a function
+err stack: TypeError: addCheckInType.substr is not a function
+    at getCheckInTypeList (d:\jin10\sign\sign\sign-backend\controllers\admin\checkintype-ctrl.js:6:18)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:47:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/checkintype/getCheckInTypeList\nrequest client ip:  ::1\nrequest body: \n{}\nresponse time: 5\nerr name: TypeError\nerr message: addCheckInType.substr is not a function\nerr stack: TypeError: addCheckInType.substr is not a function\n    at getCheckInTypeList (d:\\jin10\\sign\\sign\\sign-backend\\controllers\\admin\\checkintype-ctrl.js:6:18)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at next (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:45:18)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:346:16\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:36:12\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:351:31)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at app.use (d:\\jin10\\sign\\sign\\sign-backend\\app.js:38:11)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at views (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-views\\lib\\index.js:61:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at serve (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-static\\index.js:47:14)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at filter (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-json\\index.js:25:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at parseBody.then.body (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-bodyparser\\index.js:74:14)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/checkintype/getCheckInTypeList',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '2',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/checkintype/getCheckInTypeList',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T11:41:12.724] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/bulkDeleteSignOn
+request client ip:  ::1
+request body: 
+{"ids":[]}
+response time: 5222
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?)' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?)' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.deleteSignon (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:101:31)
+    at Object.deleteSignon (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:71:31)
+    at bulkDeleteSignOn (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:55:39)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T11:41:12.725] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/bulkDeleteSignOn
+request client ip:  ::1
+request body: 
+{"ids":[]}
+response time: 5222
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?)' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?)' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.deleteSignon (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:101:31)
+    at Object.deleteSignon (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:71:31)
+    at bulkDeleteSignOn (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:55:39)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:47:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/signon/bulkDeleteSignOn\nrequest client ip:  ::1\nrequest body: \n{"ids":[]}\nresponse time: 5222\nerr name: Error\nerr message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?)\' at line 1\nerr stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?)\' at line 1\n    at PromisePool.query (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\mysql2\\promise.js:322:22)\n    at Function.deleteSignon (d:\\jin10\\sign\\sign\\sign-backend\\common\\db\\db-helper.js:101:31)\n    at Object.deleteSignon (d:\\jin10\\sign\\sign\\sign-backend\\services\\admin\\signon-service.js:71:31)\n    at bulkDeleteSignOn (d:\\jin10\\sign\\sign\\sign-backend\\controllers\\admin\\signon-ctrl.js:55:39)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at next (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:45:18)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:346:16\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:36:12\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:351:31)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at app.use (d:\\jin10\\sign\\sign\\sign-backend\\app.js:38:11)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at views (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-views\\lib\\index.js:61:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at serve (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-static\\index.js:47:14)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at filter (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-json\\index.js:25:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at parseBody.then.body (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-bodyparser\\index.js:74:14)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/signon/bulkDeleteSignOn',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '10',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/signon/bulkDeleteSignOn',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T17:08:21.922] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"每日街坊","desc":"每日街坊"}
+response time: 12842
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET (`name` = '[object Object]', `note` = NULL)' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET (`name` = '[object Object]', `note` = NULL)' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.saveScene (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:61:31)
+    at Object.addScene (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:20:31)
+    at addScene (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:16:34)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T17:08:21.923] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"每日街坊","desc":"每日街坊"}
+response time: 12842
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET (`name` = '[object Object]', `note` = NULL)' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET (`name` = '[object Object]', `note` = NULL)' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.saveScene (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:61:31)
+    at Object.addScene (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:20:31)
+    at addScene (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:16:34)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:47:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/scene/addScene\nrequest client ip:  ::1\nrequest body: \n{"name":"每日街坊","desc":"每日街坊"}\nresponse time: 12842\nerr name: Error\nerr message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET (`name` = \'[object Object]\', `note` = NULL)\' at line 1\nerr stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET (`name` = \'[object Object]\', `note` = NULL)\' at line 1\n    at PromisePool.query (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\mysql2\\promise.js:322:22)\n    at Function.saveScene (d:\\jin10\\sign\\sign\\sign-backend\\common\\db\\db-helper.js:61:31)\n    at Object.addScene (d:\\jin10\\sign\\sign\\sign-backend\\services\\admin\\scene-service.js:20:31)\n    at addScene (d:\\jin10\\sign\\sign\\sign-backend\\controllers\\admin\\scene-ctrl.js:16:34)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at next (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:45:18)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:346:16\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:36:12\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:351:31)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at app.use (d:\\jin10\\sign\\sign\\sign-backend\\app.js:38:11)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at views (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-views\\lib\\index.js:61:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at serve (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-static\\index.js:47:14)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at filter (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-json\\index.js:25:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at parseBody.then.body (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-bodyparser\\index.js:74:14)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/scene/addScene',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '45',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/scene/addScene',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T17:09:53.399] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"每日街坊","desc":"每日街坊"}
+response time: 37146
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '[object Object]', `note` = NULL' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '[object Object]', `note` = NULL' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.saveScene (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:61:31)
+    at Object.addScene (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:20:31)
+    at addScene (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:16:34)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T17:09:53.401] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"每日街坊","desc":"每日街坊"}
+response time: 37146
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '[object Object]', `note` = NULL' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '[object Object]', `note` = NULL' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.saveScene (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:61:31)
+    at Object.addScene (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:20:31)
+    at addScene (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:16:34)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:47:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/scene/addScene\nrequest client ip:  ::1\nrequest body: \n{"name":"每日街坊","desc":"每日街坊"}\nresponse time: 37146\nerr name: Error\nerr message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET `name` = \'[object Object]\', `note` = NULL\' at line 1\nerr stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET `name` = \'[object Object]\', `note` = NULL\' at line 1\n    at PromisePool.query (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\mysql2\\promise.js:322:22)\n    at Function.saveScene (d:\\jin10\\sign\\sign\\sign-backend\\common\\db\\db-helper.js:61:31)\n    at Object.addScene (d:\\jin10\\sign\\sign\\sign-backend\\services\\admin\\scene-service.js:20:31)\n    at addScene (d:\\jin10\\sign\\sign\\sign-backend\\controllers\\admin\\scene-ctrl.js:16:34)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at next (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:45:18)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:346:16\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:36:12\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:351:31)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at app.use (d:\\jin10\\sign\\sign\\sign-backend\\app.js:38:11)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at views (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-views\\lib\\index.js:61:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at serve (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-static\\index.js:47:14)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at filter (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-json\\index.js:25:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at parseBody.then.body (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-bodyparser\\index.js:74:14)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/scene/addScene',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '45',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/scene/addScene',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T17:10:53.615] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"每日晨报","desc":"每日晨报"}
+response time: 9923
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '每日晨报', `note` = '每日晨报'' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '每日晨报', `note` = '每日晨报'' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.saveScene (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:61:31)
+    at Object.addScene (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:20:31)
+    at addScene (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:16:34)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T17:10:53.618] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/scene/addScene
+request client ip:  ::1
+request body: 
+{"name":"每日晨报","desc":"每日晨报"}
+response time: 9923
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '每日晨报', `note` = '每日晨报'' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '每日晨报', `note` = '每日晨报'' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.saveScene (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:61:31)
+    at Object.addScene (d:\jin10\sign\sign\sign-backend\services\admin\scene-service.js:20:31)
+    at addScene (d:\jin10\sign\sign\sign-backend\controllers\admin\scene-ctrl.js:16:34)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at d:\jin10\sign\sign\sign-backend\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:38:11)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at views (d:\jin10\sign\sign\sign-backend\node_modules\koa-views\lib\index.js:61:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at serve (d:\jin10\sign\sign\sign-backend\node_modules\koa-static\index.js:47:14)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at filter (d:\jin10\sign\sign\sign-backend\node_modules\koa-json\index.js:25:12)
+    at dispatch (d:\jin10\sign\sign\sign-backend\node_modules\koa-compose\index.js:42:32)
+    at parseBody.then.body (d:\jin10\sign\sign\sign-backend\node_modules\koa-bodyparser\index.js:74:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:47:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/scene/addScene\nrequest client ip:  ::1\nrequest body: \n{"name":"每日晨报","desc":"每日晨报"}\nresponse time: 9923\nerr name: Error\nerr message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET `name` = \'每日晨报\', `note` = \'每日晨报\'\' at line 1\nerr stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET `name` = \'每日晨报\', `note` = \'每日晨报\'\' at line 1\n    at PromisePool.query (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\mysql2\\promise.js:322:22)\n    at Function.saveScene (d:\\jin10\\sign\\sign\\sign-backend\\common\\db\\db-helper.js:61:31)\n    at Object.addScene (d:\\jin10\\sign\\sign\\sign-backend\\services\\admin\\scene-service.js:20:31)\n    at addScene (d:\\jin10\\sign\\sign\\sign-backend\\controllers\\admin\\scene-ctrl.js:16:34)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at next (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:45:18)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:346:16\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:44:32)\n    at d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\node_modules\\koa-compose\\index.js:36:12\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-router\\lib\\router.js:351:31)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at app.use (d:\\jin10\\sign\\sign\\sign-backend\\app.js:38:11)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at views (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-views\\lib\\index.js:61:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at serve (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-static\\index.js:47:14)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at filter (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-json\\index.js:25:12)\n    at dispatch (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-compose\\index.js:42:32)\n    at parseBody.then.body (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\koa-bodyparser\\index.js:74:14)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/scene/addScene',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '45',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/scene/addScene',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T17:23:35.491] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/addSignon
+request client ip:  ::1
+request body: 
+{"checkinType":3,"dateType":2,"startAt":"2019-04-24","endAt":"2019-05-25","number":0,"name":"测试234","desc":"测试234描述"}
+response time: 9429
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '测试234', `rule_desc` = '测试234描述', `start_at` = '2019-04' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '测试234', `rule_desc` = '测试234描述', `start_at` = '2019-04' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.addSignon (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:89:31)
+    at Object.addSignon (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:47:31)
+    at addSignon (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:28:36)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T17:23:35.492] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/addSignon
+request client ip:  ::1
+request body: 
+{"checkinType":3,"dateType":2,"startAt":"2019-04-24","endAt":"2019-05-25","number":0,"name":"测试234","desc":"测试234描述"}
+response time: 9429
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '测试234', `rule_desc` = '测试234描述', `start_at` = '2019-04' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `name` = '测试234', `rule_desc` = '测试234描述', `start_at` = '2019-04' at line 1
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.addSignon (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:89:31)
+    at Object.addSignon (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:47:31)
+    at addSignon (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:28:36)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:47:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/signon/addSignon\nrequest client ip:  ::1\nrequest body: \n{"checkinType":3,"dateType":2,"startAt":"2019-04-24","endAt":"2019-05-25","number":0,"name":"测试234","desc":"测试234描述"}\nresponse time: 9429\nerr name: Error\nerr message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET `name` = \'测试234\', `rule_desc` = \'测试234描述\', `start_at` = \'2019-04\' at line 1\nerr stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SET `name` = \'测试234\', `rule_desc` = \'测试234描述\', `start_at` = \'2019-04\' at line 1\n    at PromisePool.query (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\mysql2\\promise.js:322:22)\n    at Function.addSignon (d:\\jin10\\sign\\sign\\sign-backend\\common\\db\\db-helper.js:89:31)\n    at Object.addSignon (d:\\jin10\\sign\\sign\\sign-backend\\services\\admin\\signon-service.js:47:31)\n    at addSignon (d:\\jin10\\sign\\sign\\sign-backend\\controllers\\admin\\signon-ctrl.js:28:36)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/signon/addSignon',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '129',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/signon/addSignon',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2019-04-16T17:29:03.427] [ERROR] error - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/addSignon
+request client ip:  ::1
+request body: 
+{"checkinType":3,"dateType":3,"startAt":"2019-04-26","endAt":"2019-05-31","number":0,"name":"测试10000","desc":"测试10000描述"}
+response time: 5068
+err name: Error
+err message: Unknown column 'checkintypeIid' in 'field list'
+err stack: Error: Unknown column 'checkintypeIid' in 'field list'
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.addSignon (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:89:31)
+    at Object.addSignon (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:47:31)
+    at addSignon (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:28:36)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+[2019-04-16T17:29:03.428] [ERROR] error - server error { ServiceUnavailableError: 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/addSignon
+request client ip:  ::1
+request body: 
+{"checkinType":3,"dateType":3,"startAt":"2019-04-26","endAt":"2019-05-31","number":0,"name":"测试10000","desc":"测试10000描述"}
+response time: 5068
+err name: Error
+err message: Unknown column 'checkintypeIid' in 'field list'
+err stack: Error: Unknown column 'checkintypeIid' in 'field list'
+    at PromisePool.query (d:\jin10\sign\sign\sign-backend\node_modules\mysql2\promise.js:322:22)
+    at Function.addSignon (d:\jin10\sign\sign\sign-backend\common\db\db-helper.js:89:31)
+    at Object.addSignon (d:\jin10\sign\sign\sign-backend\services\admin\signon-service.js:47:31)
+    at addSignon (d:\jin10\sign\sign\sign-backend\controllers\admin\signon-ctrl.js:28:36)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+*************** error log end ***************
+
+    at Object.throw (d:\jin10\sign\sign\sign-backend\node_modules\koa\lib\context.js:97:11)
+    at app.use (d:\jin10\sign\sign\sign-backend\app.js:47:14)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message:
+   '\n*************** error log start ***************\nrequest method: POST\nrequest originalUrl:  /bonus/admin/signon/addSignon\nrequest client ip:  ::1\nrequest body: \n{"checkinType":3,"dateType":3,"startAt":"2019-04-26","endAt":"2019-05-31","number":0,"name":"测试10000","desc":"测试10000描述"}\nresponse time: 5068\nerr name: Error\nerr message: Unknown column \'checkintypeIid\' in \'field list\'\nerr stack: Error: Unknown column \'checkintypeIid\' in \'field list\'\n    at PromisePool.query (d:\\jin10\\sign\\sign\\sign-backend\\node_modules\\mysql2\\promise.js:322:22)\n    at Function.addSignon (d:\\jin10\\sign\\sign\\sign-backend\\common\\db\\db-helper.js:89:31)\n    at Object.addSignon (d:\\jin10\\sign\\sign\\sign-backend\\services\\admin\\signon-service.js:47:31)\n    at addSignon (d:\\jin10\\sign\\sign\\sign-backend\\controllers\\admin\\signon-ctrl.js:28:36)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\n*************** error log end ***************\n' } { request:
+   { method: 'POST',
+     url: '/bonus/admin/signon/addSignon',
+     header:
+      { host: 'localhost:3001',
+        connection: 'keep-alive',
+        'content-length': '133',
+        accept: 'application/json',
+        origin: 'http://localhost:8080',
+        'user-agent':
+         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+        'content-type': 'application/json',
+        referer: 'http://localhost:8080/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9' } },
+  response:
+   { status: 404,
+     message: 'Not Found',
+     header:
+      [Object: null prototype] { vary: 'Origin', 'access-control-allow-origin': '*' } },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/bonus/admin/signon/addSignon',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
