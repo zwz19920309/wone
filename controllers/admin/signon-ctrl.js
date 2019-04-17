@@ -1,6 +1,7 @@
 const HttpResult = require('../../common/http/http-result')
 const ToolUtil = require('../../common/utils/tool-util')
 const signonService = require('../../services/admin/signon-service')
+const sceneService = require('../../services/admin/scene-service')
 const datetypeService = require('../../services/admin/datetype-service')
 const prizeService = require('../../services/admin/prize-service')
 
@@ -61,8 +62,9 @@ const getSignonListBySceneId = async (ctx) => {
   let { sceneId, type, page, pageSize } = ctx.request.body
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
   let params = { sceneId: sceneId }
+  let scene = await sceneService.findOneScene({ id: sceneId })
   let signonList = (parseInt(type) === 1) ? await signonService.getSignonNotInList(params) : await signonService.getSignonInList(params)
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, total: Math.ceil(signonList.total / pageInfo.pageSize) }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, scene: scene, total: Math.ceil(signonList.total / pageInfo.pageSize) }, 'SUCCESS')
 }
 
 // 签到模板批量添加奖品列表

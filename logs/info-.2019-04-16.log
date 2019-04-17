@@ -3935,3 +3935,16 @@ response body:
 {"status":200,"message":"SUCCESS","data":{"list":[{"id":30,"name":"测试10000","cycle_text":{"name":"月","type":3,"number":0},"prizes_text":null,"checktypename":"累计签到","checktypetype":3,"rule_desc":"测试10000描述","start_at":"2019-04-26 00:00:00","end_at":"2019-05-31 00:00:00","checkintype_id":3}],"total":null}}
 *************** response log end ***************
 
+[2019-04-16T18:10:23.573] [INFO] info - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /bonus/admin/signon/getSignonList
+request client ip:  ::1
+request body: 
+{"page":1,"pageSize":10}
+response time: 2
+response status: 200
+response body: 
+{"status":200,"message":"SUCCESS","data":{"list":[{"id":30,"name":"测试10000","cycle_text":{"name":"月","type":3,"number":0},"prizes_text":null,"checktypename":"累计签到","checktypetype":3,"rule_desc":"测试10000描述","start_at":"2019-04-26 00:00:00","end_at":"2019-05-31 00:00:00","checkintype_id":3}],"total":1}}
+*************** response log end ***************
+

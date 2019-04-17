@@ -48,22 +48,29 @@ class DBHelper {
   }
 
   static async getSceneList (params) {
-    let [rows] = await DataDb.query('SELECT id, name, note, createdAt FROM scene limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
+    let [rows] = await DataDb.query('SELECT id, name, note, start_at, end_at, created_at FROM scene limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(*) as total FROM scene')
     return { total: total[0][0].total, rows: rows }
   }
 
   static async findOneScene (id) {
-    let [rows] = await DataDb.query('SELECT id, type, name FROM scene WHERE id = ?', [id])
-    return rows
+    let [rows] = await DataDb.query('SELECT id, name, note, start_at, end_at FROM scene WHERE id = ? limit 1', [id])
+    let res = rows.length ? rows[0] : {}
+    return res
   }
-  static async saveScene (name, note) {
-    let [rows] = await DataDb.query('insert into scene SET ?', [{ name, note }])
+
+  static async saveScene (params) {
+    let [rows] = await DataDb.query('INSERT INTO SCENE SET ?', [{ name: params.name, note: params.note, start_at: params.start_at, end_at: params.end_at }])
     return rows
   }
 
-  static async deleteScene (params) {
-    let [rows] = await DataDb.query('delete from scene where id = ?', [params.id])
+  static async updateScene (params) {
+    let [rows] = await DataDb.query('update scene SET ?  WHERE id = ?', [{ name: params.name, note: params.note, start_at: params.start_at, end_at: params.end_at }, params.id])
+    return rows
+  }
+
+  static async bulkDeleteScene (params) {
+    let [rows] = await DataDb.query('DELETE FROM SCENE WHERE id in (?)', [params.ids])
     return rows
   }
 
@@ -76,13 +83,13 @@ class DBHelper {
   static async getSignonListInId (params) {
     let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc, start_at, end_at, checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id in (select signon_id from scene_sign where scene_id = ?)'
     let [rows] = await DataDb.query(sql, params.sceneId)
-    return { rows: rows }
+    return { total: rows.length, rows: rows }
   }
 
   static async getSignonListNotInId (params) {
     let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc, start_at, end_at, checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id not in (select signon_id from scene_sign where scene_id = ?)'
     let [rows] = await DataDb.query(sql, params.sceneId)
-    return { rows: rows }
+    return { total: rows.length, rows: rows }
   }
 
   static async addSignon (params) {
