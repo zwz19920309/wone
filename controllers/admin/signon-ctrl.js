@@ -32,14 +32,14 @@ const addSignon = async (ctx) => {
 
 // 更新签到类型
 const updateSignonById = async (ctx) => {
-  let { id, name, checkinTypeId, dateTypeId, number, ruleDesc, startAt, endAt } = ctx.request.body
+  let { id, name, checkinTypeId, dateTypeId, number, ruleDesc } = ctx.request.body
   let signon = await signonService.getSignonById({ id: id })
-  let params = { name: name || signon.name, checkintype_id: checkinTypeId || signon.checkintype_id, rule_desc: ruleDesc || signon.rule_desc, start_at: startAt || signon.start_at, end_at: endAt || signon.end_at }
+  let params = { name: name || signon.name, checkintype_id: checkinTypeId || signon.checkintype_id, rule_desc: ruleDesc || signon.rule_desc }
   if (dateTypeId) {
     let dateType = await datetypeService.getDateTypeById({ id: dateTypeId })
     params.cycle_text = JSON.stringify({ name: dateType.name, number: number || '0', type: parseInt(dateType.id) })
   }
-  let result = await signonService.upDateSignon(params, { id: id })
+  let result = await signonService.upDateSignonInfo(params, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { res: result }, 'SUCCESS')
 }
 
@@ -64,7 +64,7 @@ const getSignonListBySceneId = async (ctx) => {
   let params = { sceneId: sceneId }
   let scene = await sceneService.findOneScene({ id: sceneId })
   let signonList = (parseInt(type) === 1) ? await signonService.getSignonNotInList(params) : await signonService.getSignonInList(params)
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, scene: scene, total: Math.ceil(signonList.total / pageInfo.pageSize) }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, scene: scene, total: signonList.total }, 'SUCCESS')
 }
 
 // 签到模板批量添加奖品列表

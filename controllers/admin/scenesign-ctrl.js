@@ -4,7 +4,11 @@ const scenesignService = require('../../services/admin/scenesign-service')
 // 批量增加场景签到
 const bulkAddScenesign = async (ctx) => {
   let { scenesignons } = ctx.request.body
-  let scenesign = await scenesignService.bulkCreateScenesign(scenesignons)
+  let paramsArr = []
+  scenesignons.forEach(ele => {
+    paramsArr.push([ ele.sceneId, ele.signonId, ele.startAt, ele.endAt ])
+  })
+  let scenesign = await scenesignService.bulkCreateScenesign(paramsArr)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, scenesign, 'SUCCESS')
 }
 
@@ -14,8 +18,8 @@ const bulkDeleteScenesign = async (ctx) => {
   let signonIds = []
   let sceneId
   scenesignons.forEach(ele => {
-    signonIds.push(ele[1])
-    sceneId = ele[0]
+    signonIds.push(ele.signonId)
+    sceneId = ele.sceneId
   })
   let result = await scenesignService.bulkDeleteScenesign({ signonIds: signonIds, sceneId: sceneId })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { res: result }, 'SUCCESS')

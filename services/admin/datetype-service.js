@@ -5,10 +5,19 @@ const DBHelper = require('../../common/db/db-helper')
   * @param  {object} params - 参数
   * @return {object}
  */
-const getDateTypeList = async (params, attrs) => {
-  let p = params ? { where: params } : {}
-  attrs && attrs.length && (p.attributes = attrs)
+const getDateTypeList = async (params) => {
   let dateTypeList = await DBHelper.getDateTypeList()
+  return dateTypeList
+}
+
+/**
+  * 获取日期类型列表
+  * @method getDateTypeList
+  * @param  {object} params - 参数
+  * @return {object}
+ */
+const getDateTypeById = async (params) => {
+  let dateTypeList = await DBHelper.getDateTypeById(params)
   return dateTypeList
 }
 
@@ -49,5 +58,6 @@ const getDateTypeListByType = async (type) => {
 module.exports = {
   getDateTypeList,
   getDateTypeListByType,
-  getOneDateTypeByCons
+  getOneDateTypeByCons,
+  getDateTypeById
 }
