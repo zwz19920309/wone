@@ -110,7 +110,7 @@ class DBHelper {
   }
 
   static async updateSignonInfo (params, cons) {
-    let [rows] = await DataDb.query('UPDATE signon SET  ? where id = ?', [{ name: params.name, rule_desc: params.rule_desc, cycle_text: params.cycle_text }, cons.id])
+    let [rows] = await DataDb.query('UPDATE signon SET  ? where id = ?', [{ name: params.name, checkintype_id: params.checkintype_id, rule_desc: params.rule_desc, cycle_text: params.cycle_text }, cons.id])
     return rows
   }
 
@@ -164,8 +164,23 @@ class DBHelper {
   }
 
   static async bulkDekleteSceneSign (params) {
-    let sql = 'DELETE FROM scene_sign where signon_id in (?) and scene_id = ?'
+    let sql = 'DELETE FROM scene_sign WHERE signon_id in (?) and scene_id = ?'
     let [rows] = await DataDb.query(sql, [params.signonIds, params.sceneId])
+    return rows
+  }
+
+  static async getResignFromList () {
+    let [rows] = await DataDb.query('SELECT id, type, name FROM resign_form')
+    return rows
+  }
+
+  static async getResignDateList () {
+    let [rows] = await DataDb.query('SELECT id, date  FROM resign_date')
+    return rows
+  }
+
+  static async addResignDate (params) {
+    let [rows] = await DataDb.query('INSERT INTO resign_date (date) VALUES ?', [params])
     return rows
   }
 }

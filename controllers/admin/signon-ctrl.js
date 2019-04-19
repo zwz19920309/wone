@@ -10,7 +10,7 @@ const getSignonList = async (ctx) => {
   let { page, pageSize } = ctx.request.body
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
   let signonList = await signonService.getSignonList(pageInfo)
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, total: Math.ceil(signonList.total / pageInfo.pageSize) }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, total: signonList.total }, 'SUCCESS')
 }
 
 // 通过id获取签到类型
