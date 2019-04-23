@@ -70,6 +70,17 @@ const upDateSignonInfo = async (params, cons) => {
   let result = await DBHelper.updateSignonInfo(params, cons)
   return result
 }
+/**
+  * 更新签到模板补签消耗数据
+  * @method bulkCreate
+  * @param  {object} params -签到模板参数
+  * @cons  {object} cons -更新条件
+  * @return {object} 更新结果
+ */
+const upDateSignonConsums = async (params, cons) => {
+  let result = await DBHelper.updateSignonConsumes(params, cons)
+  return result
+}
 
 /**
   * 删除签到模板数据
@@ -89,6 +100,7 @@ module.exports = {
   addSignon,
   upDateSignon,
   upDateSignonInfo,
+  upDateSignonConsums,
   deleteSignon,
   getSignonInList,
   getSignonNotInList

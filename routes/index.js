@@ -6,12 +6,14 @@ router.prefix('/bonus')
 // 接口中转直连
 routesLoader(path.join(__dirname, './client')).then(routes => {
   routes.forEach(route => {
+    console.log('@clientRoute: ', route)
     route(router)
   })
 })
 
 routesLoader(path.join(__dirname, './admin')).then(routes => {
   routes.forEach(route => {
+    console.log('@adminRoute: ', route)
     route(router)
   })
 })

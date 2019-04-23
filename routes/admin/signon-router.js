@@ -18,8 +18,16 @@ apiRouter.post('/bulkAddPrizes', signonCtrl.bulkAddPrizes)
 apiRouter.post('/bulkDeletePrizes', signonCtrl.bulkDeletePrizes)
 // 更新模板信息
 apiRouter.post('/updateSignonById', signonCtrl.updateSignonById)
-// 批量添加奖品
+// 获取奖品
 apiRouter.post('/getPrizesBySignonById', signonCtrl.getPrizesBySignonById)
+// 消费奖品
+apiRouter.post('/getConsumesBySignonById', signonCtrl.getConsumesBySignonById)
+// 添加消费奖品
+apiRouter.post('/bulkAddConsumes', signonCtrl.bulkAddConsumes)
+// 删除消费奖品
+apiRouter.post('/bulkDeleteConsumes', signonCtrl.bulkDeleteConsumes)
+// 用户签到
+apiRouter.post('/userSignon', signonCtrl.userSignon)
 module.exports = router => {
   router.use('/admin/signon', apiRouter.routes(), apiRouter.allowedMethods())
 }

@@ -81,7 +81,7 @@ class DBHelper {
   }
 
   static async getSignonList(params) {
-    let [rows] = await DataDb.query('SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
+    let [rows] = await DataDb.query('SELECT a.id as id, a.name as name, cycle_text, extra_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(*) as total FROM signon')
     return { total: total[0][0].total, rows: rows }
   }
@@ -100,12 +100,17 @@ class DBHelper {
   }
 
   static async addSignon(params) {
-    let [rows] = await DataDb.query('insert into signon SET ?', [{ name: params.name, rule_desc: params.rule_desc, checkintype_id: params.checkintype_id, cycle_text: params.cycle_text }])
+    let [rows] = await DataDb.query('insert into signon SET ?', [{ name: params.name, rule_desc: params.rule_desc, checkintype_id: params.checkintype_id, cycle_text: params.cycle_text, extra_text: params.extra_text }])
     return rows
   }
 
   static async updateSignonPrizes(params, cons) {
     let [rows] = await DataDb.query('UPDATE signon SET prizes_text = ? where id = ?', [params.prizes_text, cons.id])
+    return rows
+  }
+
+  static async updateSignonConsumes(params, cons) {
+    let [rows] = await DataDb.query('UPDATE signon SET extra_text = ? where id = ?', [params.extraText, cons.id])
     return rows
   }
 
@@ -121,7 +126,7 @@ class DBHelper {
   }
 
   static async getSignonById(params) {
-    let [rows] = await DataDb.query('SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc, checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id where a.id = ? limit 1', [params.id])
+    let [rows] = await DataDb.query('SELECT a.id as id, a.name as name, cycle_text, prizes_text, extra_text, b.name as checktypename, b.type as checktypetype, rule_desc, checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id where a.id = ? limit 1', [params.id])
     return rows[0]
   }
 
@@ -180,8 +185,15 @@ class DBHelper {
   }
 
   static async addResignDate(params) {
-    let [rows] = await DataDb.query('INSERT INTO resign_date (re_date) VALUES ?', [params])
+    let [rows] = await DataDb.query('UPDATE settings SET resign =  ? WHERE id = 1', [params.resign])
     return rows
+  }
+  // 'UPDATE signon SET extra_text = ? where id = ?
+
+  static async getResignSettings(params) {
+    let [rows] = await DataDb.query('SELECT resign FROM settings where id = ?', [params.id])
+    let res = rows.length ? rows[0].resign : []
+    return res
   }
 }
 

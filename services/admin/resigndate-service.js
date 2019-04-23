@@ -6,9 +6,14 @@ const DBHelper = require('../../common/db/db-helper')
   * @return {object} 签到类型列表
  */
 const getResignDateList = async () => {
-  let resignDateList = await DBHelper.getResignDateList()
+  let resignDateList = await DBHelper.getResignSettings({ id: 1 })
   return resignDateList
 }
+
+// const addResignDate = async (params) => {
+//   let resignDateList = await DBHelper.addResignDate(params)
+//   return resignDateList
+// }
 
 const addResignDate = async (params) => {
   let resignDateList = await DBHelper.addResignDate(params)

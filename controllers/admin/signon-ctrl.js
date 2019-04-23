@@ -22,10 +22,11 @@ const getSignonById = async (ctx) => {
 
 // 增加签到类型
 const addSignon = async (ctx) => {
-  let { name, checkinType, dateType, number, startAt, endAt, desc } = ctx.request.body
+  let { name, checkinType, dateType, number, startAt, endAt, desc, formId, isResign, resignDates } = ctx.request.body
   console.log('@startAt: ', startAt)
   let dateTypeObj = await datetypeService.getOneDateTypeByCons({ type: dateType })
-  let signonData = { name: name, checkintype_id: checkinType, rule_desc: desc, cycle_text: JSON.stringify({ type: dateType, name: dateTypeObj[0].name, number: number || 0 }), start_at: startAt, end_at: endAt }
+  let extraText = parseInt(isResign) === 2 ? { resign: { isResign: isResign, formId: formId, resignDates: resignDates || [] } } : {}
+  let signonData = { name: name, checkintype_id: checkinType, rule_desc: desc, cycle_text: JSON.stringify({ type: dateType, name: dateTypeObj[0].name, number: number || 0 }), extra_text: JSON.stringify(extraText), start_at: startAt, end_at: endAt }
   let signon = await signonService.addSignon(signonData)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, signon, 'SUCCESS')
 }
@@ -103,7 +104,7 @@ const getPrizesBySignonById = async (ctx) => {
   let prizesText = signon.prizes_text || {}
   let prizes = { rows: [], count: 0 }
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
-  if (prizesText.prizes && prizesText.prizes[0] && prizesText.prizes[0][number]) {
+  if (prizesText.prizes && prizesText.prizes[0] && prizesText.prizes[0][number] && prizesText.prizes[0] && prizesText.prizes[0][number].length) {
     let existIds = await prizesText.prizes[0][number]
     let pType = parseInt(type)
     if (pType === 1) {
@@ -119,6 +120,62 @@ const getPrizesBySignonById = async (ctx) => {
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: prizes.rows, total: Math.ceil(prizes.count / pageInfo.pageSize) }, 'SUCCESS')
 }
 
+// 通过id,number, type获取模板的可选择礼品列表
+const getConsumesBySignonById = async (ctx) => {
+  let { id, date, type, page, pageSize } = ctx.request.body
+  let signon = await signonService.getSignonById({ id: id })
+  let extraText = signon.extra_text || {}
+  let consumes = { rows: [], count: 0 }
+  let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
+  if (extraText.consumes && extraText.consumes[0] && extraText.consumes[0][date] && extraText.consumes[0][date].length) {
+    let existIds = await extraText.consumes[0][date]
+    let pType = parseInt(type)
+    consumes = await prizeService.getPrizeList(existIds, pType)
+  } else {
+    if (parseInt(type) === 1) {
+      consumes = await prizeService.getPrizeList(pageInfo)
+    }
+  }
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: consumes.rows, total: consumes.total }, 'SUCCESS')
+}
+
+// 签到模板批量添加消耗奖品列表
+const bulkAddConsumes = async (ctx) => {
+  let { id, date, prizeIds } = ctx.request.body
+  let signon = await signonService.getSignonById({ id: id })
+  let extraText = signon.extra_text || {}
+  if (!extraText.consumes) {
+    extraText.consumes = [{ [date]: prizeIds }]
+  } else if (!extraText.consumes[0][date]) {
+    extraText.consumes[0][date] = prizeIds
+  } else {
+    extraText.consumes[0][date] = extraText.consumes[0][date].concat(prizeIds)
+  }
+  let res = await signonService.upDateSignonConsums({ extraText: JSON.stringify(extraText) }, { id: id })
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
+}
+
+// 签到模板批量删除消耗奖品列表
+const bulkDeleteConsumes = async (ctx) => {
+  let { id, date, prizeIds } = ctx.request.body
+  let signon = await signonService.getSignonById({ id: id })
+  let extraText = signon.extra_text
+  if (!(extraText.consumes && extraText.consumes[0] && extraText.consumes[0][date])) {
+    ctx.body = HttpResult.response(HttpResult.HttpStatus.FAIL, {}, 'FAIL')
+  }
+  extraText.consumes[0][date] = ToolUtil.removeDuplication(extraText.consumes[0][date], prizeIds)
+  let res = await signonService.upDateSignonConsums({ extraText: JSON.stringify(extraText) }, { id: id })
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
+}
+
+const userSignon = async (ctx) => {
+  let { uid, sceneId } = ctx.request.body
+  // let signonList = await signonService.getSignonList({}, [])
+  let signonList = await signonService.getSignonInList({ sceneId: sceneId })
+  console.log('@getsignonList:--------- ')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList }, 'SUCCESS')
+}
+
 module.exports = {
   updateSignonById,
   getSignonList,
@@ -129,5 +186,9 @@ module.exports = {
   getSignonListBySceneId,
   bulkDeleteSignOn,
   bulkAddPrizes,
-  bulkDeletePrizes
+  bulkDeletePrizes,
+  getConsumesBySignonById,
+  bulkAddConsumes,
+  bulkDeleteConsumes,
+  userSignon
 }
