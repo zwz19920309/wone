@@ -195,6 +195,18 @@ class DBHelper {
     let res = rows.length ? rows[0].resign : []
     return res
   }
+
+  static async bulkSaveAwardRecord(params) {
+    let [rows] = await DataDb.query('INSERT INTO award_record (uid, prize_id, scenesign_id, created_at) VALUES ?', [params])
+    return rows
+  }
+
+  static async bulkSaveSignRcord(params) {
+    let [rows] = await DataDb.query('INSERT INTO sign_record (uid, scene_id, created_at) VALUES ?', [params])
+    return rows
+  }
+
+
 }
 
 module.exports = DBHelper

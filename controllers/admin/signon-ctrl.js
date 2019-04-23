@@ -4,6 +4,8 @@ const signonService = require('../../services/admin/signon-service')
 const sceneService = require('../../services/admin/scene-service')
 const datetypeService = require('../../services/admin/datetype-service')
 const prizeService = require('../../services/admin/prize-service')
+const awardrecordService = require('../../services/admin/awardrecord-service')
+const signrecordService = require('../../services/admin/signrecord-service')
 
 // 获取签到类型类表
 const getSignonList = async (ctx) => {
@@ -171,9 +173,25 @@ const bulkDeleteConsumes = async (ctx) => {
 const userSignon = async (ctx) => {
   let { uid, sceneId } = ctx.request.body
   // let signonList = await signonService.getSignonList({}, [])
-  let signonList = await signonService.getSignonInList({ sceneId: sceneId })
+  let signonList = await signonService.getSignonInList({ sceneId: 2 })
+  let nowDate = new Date().getDate()
+  let prizeIds = []
+  signonList.rows.forEach(signon => {
+    let startDate = new Date(Date.parse(signon.start_at.replace(/-/g, '/'))).getDate()
+    let index = nowDate - startDate + 1
+    console.log('@index: ', index)
+    let pIds = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][index] ? signon.prizes_text.prizes[0][index] : [] : []) : []
+    prizeIds = prizeIds.concat(pIds)
+  })
+  let params = []
+  prizeIds.forEach(prizeId => {
+    params.push([1, prizeId, 2, '2019-09-09'])
+  })
+  let pRes = await awardrecordService.addAwardRecord(params)
+  let sres = await signrecordService.addSignRecord([[1, 2, '2019-09-09']])
+  console.log('prizeIds: ', prizeIds)
   console.log('@getsignonList:--------- ')
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: pRes }, 'SUCCESS')
 }
 
 module.exports = {

@@ -27,7 +27,7 @@ apiRouter.post('/bulkAddConsumes', signonCtrl.bulkAddConsumes)
 // 删除消费奖品
 apiRouter.post('/bulkDeleteConsumes', signonCtrl.bulkDeleteConsumes)
 // 用户签到
-apiRouter.post('/userSignon', signonCtrl.userSignon)
+apiRouter.get('/userSignon', signonCtrl.userSignon)
 module.exports = router => {
   router.use('/admin/signon', apiRouter.routes(), apiRouter.allowedMethods())
 }
