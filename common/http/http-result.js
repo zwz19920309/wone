@@ -15,7 +15,7 @@ const response = (status, result, msg) => {
   return {
     status: status || 0,
     message: msg || '',
-    data: result || {}
+    data: result
   }
 }
 

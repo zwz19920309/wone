@@ -131,8 +131,8 @@ class DBHelper {
   }
 
   static async getPrizeList(params) {
-    let [rows] = await DataDb.query('SELECT id, name, note from prize  limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
-    let total = await DataDb.query('SELECT count(*) as total FROM prize')
+    let [rows] = await DataDb.query('SELECT id, name, note, icon from prize  limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
+    let total = await DataDb.query('SELECT count(1) as total FROM prize')
     return { total: total[0][0].total, rows: rows }
   }
 
@@ -143,23 +143,29 @@ class DBHelper {
   }
 
   static async getPrizeListInId(prizesId) {
-    let sql = 'select id, name, note FROM prize where id in (?)'
+    let sql = 'select id, name, note, icon FROM prize where id in (?)'
     let [rows] = await DataDb.query(sql, [prizesId])
     return { rows: rows }
   }
 
   static async savePrize(params) {
-    let [rows] = await DataDb.query('insert into prize  SET ?', [{ name: params.name, note: params.note }])
+    let [rows] = await DataDb.query('insert into prize  SET ?', [{ name: params.name, note: params.note, icon: params.icon }])
     return rows
   }
 
-  static async detelePrize(params) {
-    let [rows] = await DataDb.query('delete from prize where id = ?', [params.id])
+  static async bulckDetelePrize(params) {
+    let [rows] = await DataDb.query('delete from prize WHERE id in (?)', [params.ids])
+    //  await DataDb.query('DELETE FROM scene_sign WHERE signon_id in (?) and scene_id = ?', [params.signonIds, params.sceneId])
     return rows
   }
 
   static async updatePrize(params, cons) {
-    let [rows] = await DataDb.query('update prize set name = ?, note = ? where id = ?', [params.name, params.note, cons.id])
+    let [rows] = await DataDb.query('update prize SET ? where id = ?', [{ name: params.name, note: params.note, icon: params.icon }, cons.id])
+    return rows
+  }
+
+  static async getPrizeById(params) {
+    let [rows] = await DataDb.query('SELECT name, note FROM prize where id = ?', [params.id])
     return rows
   }
 
@@ -169,8 +175,7 @@ class DBHelper {
   }
 
   static async bulkDekleteSceneSign(params) {
-    let sql = 'DELETE FROM scene_sign WHERE signon_id in (?) and scene_id = ?'
-    let [rows] = await DataDb.query(sql, [params.signonIds, params.sceneId])
+    let [rows] = await DataDb.query('DELETE FROM scene_sign WHERE signon_id in (?) and scene_id = ?', [params.signonIds, params.sceneId])
     return rows
   }
 
@@ -201,12 +206,50 @@ class DBHelper {
     return rows
   }
 
+  static async getAwardRecordList(params) {
+    let sql = 'SELECT a.id as record_id, a.uid as uid, a.created_at as created_at, b.name as prize_name, b.note as prize_note, c.id as scenesign_id from award_record a ' +
+      'LEFT JOIN prize b on a.prize_id = b.id LEFT JOIN scene_sign c on c.id = a.scenesign_id'
+    let [rows] = await DataDb.query((sql + ' limit ?, ?'), [(params.page - 1) * params.pageSize, params.pageSize])
+    let total = await DataDb.query('SELECT count(1) as total from award_record')
+    return { total: total[0][0].total, rows: rows }
+  }
+
   static async bulkSaveSignRcord(params) {
     let [rows] = await DataDb.query('INSERT INTO sign_record (uid, scene_id, created_at) VALUES ?', [params])
     return rows
   }
 
+  static async getUserSignRcord(params) {
+    let [rows] = await DataDb.query('SELECT * FROM sign_record WHERE uid  = ? and scene_id = ? and created_at = ? limit 1', [params.uid, params.scene_id, params.created_at])
+    let res = rows.length ? rows[0] : null
+    return res
+  }
 
+  static async getSumUserSignRcord(params) {
+    let [rows] = await DataDb.query('SELECT count(1) as number FROM sign_record WHERE uid  = ? and scene_id = ? and created_at BETWEEN ? and ? ', [params.uid, params.scene_id, params.start_at, params.end_at])
+    let res = rows.length ? rows[0].number : 0
+    return res
+  }
+
+  static async userSignonAward(params) {
+    let con = await DataDb.getConnection()
+    try {
+      await con.beginTransaction()
+      let res1 = await con.query('INSERT INTO award_record (uid, prize_id, scenesign_id, created_at) VALUES ?', [params.prizes])
+      let res2 = await con.query('INSERT INTO sign_record SET ?', [params.record])
+      if (!(res1 && res1[0].affectedRows && res2 && res2[0].affectedRows)) {
+        await con.rollback()
+        await con.release()
+      }
+      await con.commit()
+      await con.release()
+      return true
+    } catch (e) {
+      await con.rollback()
+      await con.release()
+      throw e
+    }
+  }
 }
 
 module.exports = DBHelper

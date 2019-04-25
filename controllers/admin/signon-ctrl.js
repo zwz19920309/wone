@@ -1,3 +1,4 @@
+const moment = require('moment')
 const HttpResult = require('../../common/http/http-result')
 const ToolUtil = require('../../common/utils/tool-util')
 const signonService = require('../../services/admin/signon-service')
@@ -24,10 +25,10 @@ const getSignonById = async (ctx) => {
 
 // 增加签到类型
 const addSignon = async (ctx) => {
-  let { name, checkinType, dateType, number, startAt, endAt, desc, formId, isResign, resignDates } = ctx.request.body
+  let { name, checkinType, dateType, number, startAt, endAt, desc, formId, isResign, resignDates, cost } = ctx.request.body
   console.log('@startAt: ', startAt)
   let dateTypeObj = await datetypeService.getOneDateTypeByCons({ type: dateType })
-  let extraText = parseInt(isResign) === 2 ? { resign: { isResign: isResign, formId: formId, resignDates: resignDates || [] } } : {}
+  let extraText = parseInt(isResign) === 2 ? { resign: { isResign: isResign, formId: formId, cost: cost, resignDates: resignDates || [] } } : {}
   let signonData = { name: name, checkintype_id: checkinType, rule_desc: desc, cycle_text: JSON.stringify({ type: dateType, name: dateTypeObj[0].name, number: number || 0 }), extra_text: JSON.stringify(extraText), start_at: startAt, end_at: endAt }
   let signon = await signonService.addSignon(signonData)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, signon, 'SUCCESS')
@@ -169,29 +170,27 @@ const bulkDeleteConsumes = async (ctx) => {
   let res = await signonService.upDateSignonConsums({ extraText: JSON.stringify(extraText) }, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
 }
-
+// 用户当日签到
 const userSignon = async (ctx) => {
   let { uid, sceneId } = ctx.request.body
-  // let signonList = await signonService.getSignonList({}, [])
-  let signonList = await signonService.getSignonInList({ sceneId: 2 })
-  let nowDate = new Date().getDate()
-  let prizeIds = []
-  signonList.rows.forEach(signon => {
-    let startDate = new Date(Date.parse(signon.start_at.replace(/-/g, '/'))).getDate()
-    let index = nowDate - startDate + 1
-    console.log('@index: ', index)
-    let pIds = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][index] ? signon.prizes_text.prizes[0][index] : [] : []) : []
-    prizeIds = prizeIds.concat(pIds)
-  })
-  let params = []
+  let nowDate = moment().format('YYYY-MM-DD')
+  let signRecord = await signrecordService.getUserSignRcord({ uid: uid, scene_id: sceneId, created_at: nowDate })
+  if (signRecord) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
+  }
+  let prizeIds = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId })
+  if (!prizeIds.length) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
+  }
+  let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: nowDate } }
   prizeIds.forEach(prizeId => {
-    params.push([1, prizeId, 2, '2019-09-09'])
+    params.prizes.push([uid, prizeId, sceneId, nowDate])
   })
-  let pRes = await awardrecordService.addAwardRecord(params)
-  let sres = await signrecordService.addSignRecord([[1, 2, '2019-09-09']])
-  console.log('prizeIds: ', prizeIds)
-  console.log('@getsignonList:--------- ')
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: pRes }, 'SUCCESS')
+  let res = await signrecordService.userSignonAward(params)
+  if (!res) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
+  }
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: prizeIds }, 'SUCCESS')
 }
 
 module.exports = {

@@ -6,7 +6,7 @@ apiRouter.post('/getPrizeList', prizeCtrl.getPrizeList)
 // 添加奖品
 apiRouter.post('/addPrize', prizeCtrl.addPrize)
 // 删除奖品
-apiRouter.post('/deletePrize', prizeCtrl.deletePrize)
+apiRouter.post('/updatePrize', prizeCtrl.updatePrize)
 // 批量删除奖品
 apiRouter.post('/bulkDeletePrize', prizeCtrl.bulkDeletePrize)
 

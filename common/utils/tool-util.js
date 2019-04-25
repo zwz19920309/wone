@@ -1,3 +1,4 @@
+const config = require('../../config/config')
 const removeDuplication = (arr1, arr2) => {
   let c = []
   arr1.forEach((item) => {
@@ -15,8 +16,19 @@ const attributeCount = (obj) => {
   }
   return count
 }
+//  prefixImgUrl (ele) {
 
+const prefixImgUrl = (imgs) => {
+  if (imgs instanceof Array) {
+    imgs.forEach(img => {
+      img.icon = config.base + '/' + img.icon
+    })
+  } else {
+    imgs.icon = config.base + '/' + imgs.icon
+  }
+}
 module.exports = {
   removeDuplication,
-  attributeCount
+  attributeCount,
+  prefixImgUrl
 }

@@ -1,41 +1,48 @@
-const Sequelize = require('sequelize')
+const ToolUtil = require('../../common/utils/tool-util')
+const FileUtil = require('../../common/utils/file-util')
 const HttpResult = require('../../common/http/http-result')
 const prizeService = require('../../services/admin/prize-service')
-const Op = Sequelize.Op
 
 // 获取奖品类表
 const getPrizeList = async (ctx) => {
   let { page, pageSize } = ctx.request.body
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
-  let { count, rows } = await prizeService.getPrizeList(pageInfo)
+  let { total, rows } = await prizeService.getPrizeList(pageInfo)
+  ToolUtil.prefixImgUrl(rows)
   console.log('@getprizeList:--------- ')
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: rows, total: count }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: rows, total: total }, 'SUCCESS')
 }
 
 // 增加奖品
 const addPrize = async (ctx) => {
-  let { desc, name } = ctx.request.body
-  let prize = await prizeService.addPrize({ name: name, desc: desc })
+  let { note, name } = ctx.request.body
+  let files = ctx.request.files
+  let iconPath = await FileUtil.moveFileToTarget(files, 'icon', 'prizes')
+  let prize = await prizeService.addPrize({ name: name, note: note, icon: iconPath })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, prize, 'SUCCESS')
 }
+// updatePrize
 
-// 删除奖品
-const deletePrize = async (ctx) => {
-  let { id } = ctx.request.body
-  let result = await prizeService.deletePrize({ id: id })
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { res: result }, 'SUCCESS')
+// 增加奖品
+const updatePrize = async (ctx) => {
+  let { note, name, id } = ctx.request.body
+  let files = ctx.request.files
+  let prize = await prizeService.getPrizeById({ id: id })
+  let iconPath = await FileUtil.moveFileToTarget(files, 'icon', 'prizes')
+  let res = await prizeService.updatePrize({ name: name || prize.name, note: note || prize.note, icon: prize.icon || iconPath }, { id: id })
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
 }
 
 // 批量删除奖品
 const bulkDeletePrize = async (ctx) => {
   let { ids } = ctx.request.body
-  let result = await prizeService.deletePrize({ id: { [Op.in]: ids } })
+  let result = await prizeService.bulkDeletePrize({ ids: ids })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { res: result }, 'SUCCESS')
 }
 
 module.exports = {
   getPrizeList,
   addPrize,
-  deletePrize,
-  bulkDeletePrize
+  bulkDeletePrize,
+  updatePrize
 }

@@ -30,7 +30,16 @@ const addPrize = async (params) => {
   let result = await DBHelper.savePrize(params)
   return result
 }
-
+/**
+  * 根据id查找奖品
+  * @method addPrize
+  * @param  {object} params -奖品参数
+  * @return {object} 增加结果
+ */
+const getPrizeById = async (params) => {
+  let result = await DBHelper.getPrizeById(params)
+  return result
+}
 /**
   * 更新奖品数据
   * @method updatePrize
@@ -50,8 +59,8 @@ const updatePrize = async (params, cons) => {
   * @cons  {object} cons -更新条件
   * @return {object} 更新结果
  */
-const deletePrize = async (params) => {
-  let result = await DBHelper.detelePrize(params)
+const bulkDeletePrize = async (params) => {
+  let result = await DBHelper.bulckDetelePrize(params)
   return result
 }
 
@@ -59,5 +68,6 @@ module.exports = {
   getPrizeList,
   addPrize,
   updatePrize,
-  deletePrize
+  bulkDeletePrize,
+  getPrizeById
 }

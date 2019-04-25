@@ -11,6 +11,7 @@
   "dependencies": {
     "debug": "^2.6.3",
     "koa": "^2.2.0",
+    "koa-body": "^4.1.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
     "koa-json": "^2.0.2",
@@ -21,6 +22,8 @@
     "koa-views": "^5.2.1",
     "koa2-cors": "^2.0.6",
     "log4js": "^4.1.0",
+    "moment": "^2.24.0",
+    "move-file": "^1.2.0",
     "mysql2": "^1.6.5",
     "pug": "^2.0.0-rc.1",
     "sequelize": "^5.2.4",
