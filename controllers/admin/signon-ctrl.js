@@ -170,8 +170,9 @@ const bulkDeleteConsumes = async (ctx) => {
   let res = await signonService.upDateSignonConsums({ extraText: JSON.stringify(extraText) }, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
 }
+
 // 用户当日签到
-const userSignon = async (ctx) => {
+const getSignons = async (ctx) => {
   let { uid, sceneId } = ctx.request.body
   let nowDate = moment().format('YYYY-MM-DD')
   let signRecord = await signrecordService.getUserSignRcord({ uid: uid, scene_id: sceneId, created_at: nowDate })
@@ -179,9 +180,9 @@ const userSignon = async (ctx) => {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
   }
   let prizeIds = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId })
-  if (!prizeIds.length) {
-    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
-  }
+  // if (!prizeIds.length) {
+  //   return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
+  // }
   let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: nowDate } }
   prizeIds.forEach(prizeId => {
     params.prizes.push([uid, prizeId, sceneId, nowDate])
@@ -193,6 +194,35 @@ const userSignon = async (ctx) => {
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: prizeIds }, 'SUCCESS')
 }
 
+// 用户当日签到
+const userSignon = async (ctx) => {
+  let { uid, sceneId } = ctx.request.body
+  let nowDate = moment().format('YYYY-MM-DD')
+  let signRecord = await signrecordService.getUserSignRcord({ uid: uid, scene_id: sceneId, created_at: nowDate })
+  if (signRecord) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
+  }
+  let prizeIds = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId })
+  // if (!prizeIds.length) {
+  //   return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
+  // }
+  let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: nowDate } }
+  prizeIds.forEach(prizeId => {
+    params.prizes.push([uid, prizeId, sceneId, nowDate])
+  })
+  let res = await signrecordService.userSignonAward(params)
+  if (!res) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
+  }
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: prizeIds }, 'SUCCESS')
+}
+
+// 用户当日签到
+const getSelfSignon = async (ctx) => {
+  let { uid, sceneId } = ctx.request.body
+  let signons = await signrecordService.getSelfSignon({ uid: 1, scene_id: 2 })
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signons }, 'SUCCESS')
+}
 module.exports = {
   updateSignonById,
   getSignonList,
@@ -207,5 +237,6 @@ module.exports = {
   getConsumesBySignonById,
   bulkAddConsumes,
   bulkDeleteConsumes,
-  userSignon
+  userSignon,
+  getSelfSignon
 }

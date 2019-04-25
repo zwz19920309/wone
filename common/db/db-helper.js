@@ -225,6 +225,12 @@ class DBHelper {
     return res
   }
 
+  static async getYearsTodayRcord(params) {
+    let [rows] = await DataDb.query('SELECT * FROM sign_record WHERE uid =? and created_at = ?', [params.uid, params.created_at])
+    let res = rows.length ? rows[0] : null
+    return res
+  }
+
   static async getSumUserSignRcord(params) {
     let [rows] = await DataDb.query('SELECT count(1) as number FROM sign_record WHERE uid  = ? and scene_id = ? and created_at BETWEEN ? and ? ', [params.uid, params.scene_id, params.start_at, params.end_at])
     let res = rows.length ? rows[0].number : 0
@@ -235,12 +241,10 @@ class DBHelper {
     let con = await DataDb.getConnection()
     try {
       await con.beginTransaction()
-      let res1 = await con.query('INSERT INTO award_record (uid, prize_id, scenesign_id, created_at) VALUES ?', [params.prizes])
-      let res2 = await con.query('INSERT INTO sign_record SET ?', [params.record])
-      if (!(res1 && res1[0].affectedRows && res2 && res2[0].affectedRows)) {
-        await con.rollback()
-        await con.release()
+      if (params.prizes && params.prizes.length) {
+        await con.query('INSERT INTO award_record (uid, prize_id, scenesign_id, created_at) VALUES ?', [params.prizes])
       }
+      await con.query('INSERT INTO sign_record SET ?', [params.record])
       await con.commit()
       await con.release()
       return true

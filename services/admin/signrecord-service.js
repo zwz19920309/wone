@@ -41,7 +41,7 @@ const getSumUserSignRcord = async (params) => {
 const getTodaySignonPrizes = async (params) => {
   let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
   let prizeIds = []
-  for (let m = 0; m < signonList.rows.length; m++) {
+  for (let m = 0;m < signonList.rows.length;m++) {
     let signon = signonList.rows[m]
     let startAt = moment(signon.start_at).valueOf()
     let endAt = moment(signon.end_at).valueOf()
@@ -80,11 +80,50 @@ const userSignonAward = async (params) => {
   let res = await DBHelper.userSignonAward(params)
   return res
 }
-// userSignonAward
+
+/**
+  * 签到情况
+  * @method getTodaySignonPrizes
+  * @param  {object} params -参数
+  * @return {object} 更新结果
+ */
+const getSelfSignon = async (params) => {
+  let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
+  let prizeIds = []
+  let validSignons = []
+  for (let m = 0;m < signonList.rows.length;m++) {
+    let signon = signonList.rows[m]
+    let startAt = moment(signon.start_at).valueOf()
+    let endAt = moment(signon.end_at).valueOf()
+    let nowAt = moment().valueOf()
+    if ((nowAt < endAt) && (nowAt > startAt)) { // 签到活动时间内, 有效签到
+      switch (signon.checkintype_id) {
+        case 1:
+          break
+        case 2:
+          let completeCount = 0
+          let yearsToday = moment().subtract(1, 'days').format('YYYY-MM-DD')
+          let yearstodayRecord = await DBHelper.getYearsTodayRcord({ uid: params.uid, created_at: yearsToday })
+          if (yearstodayRecord) {
+            completeCount = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signon.start_at, end_at: signon.end_at })
+          }
+          signon.completeCount = yearstodayRecord ? completeCount : 0
+          break
+        case 3:
+          let signSum = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signon.start_at, end_at: signon.end_at })
+          signon.completeCount = signSum
+      }
+      validSignons.push(signon)
+    }
+  }
+  return validSignons
+}
+
 module.exports = {
   addSignRecord,
   getSumUserSignRcord,
   getTodaySignonPrizes,
   userSignonAward,
-  getUserSignRcord
+  getUserSignRcord,
+  getSelfSignon
 }
