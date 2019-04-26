@@ -28,8 +28,11 @@ const updatePrize = async (ctx) => {
   let { note, name, id } = ctx.request.body
   let files = ctx.request.files
   let prize = await prizeService.getPrizeById({ id: id })
-  let iconPath = await FileUtil.moveFileToTarget(files, 'icon', 'prizes')
-  let res = await prizeService.updatePrize({ name: name || prize.name, note: note || prize.note, icon: prize.icon || iconPath }, { id: id })
+  let iconPath
+  if (files['icon']) {
+    iconPath = await FileUtil.moveFileToTarget(files, 'icon', 'prizes')
+  }
+  let res = await prizeService.updatePrize({ name: name || prize.name, note: note || prize.note, icon: iconPath || prize.icon }, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
 }
 

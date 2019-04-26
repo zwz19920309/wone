@@ -8,12 +8,8 @@ const DBHelper = require('../../common/db/db-helper')
  */
 const getPrizeList = async (params, type) => {
   let prizeList = []
-  if (type) {
-    if (type === 1) {
-      prizeList = await DBHelper.getPrizeListNotInId(params)
-    } else {
-      prizeList = await DBHelper.getPrizeListInId(params)
-    }
+  if (type && type === 1) {
+    prizeList = await DBHelper.getPrizeListInId(params)
   } else {
     prizeList = await DBHelper.getPrizeList(params)
   }

@@ -5,5 +5,5 @@ const awardrecordCtrl = require('../../controllers/admin/awardrecord-ctrl')
 apiRouter.post('/getAwardRecordList', awardrecordCtrl.getAwardRecordList)
 
 module.exports = router => {
-    router.use('/admin/awardrecord', apiRouter.routes(), apiRouter.allowedMethods())
+  router.use('/admin/awardrecord', apiRouter.routes(), apiRouter.allowedMethods())
 }

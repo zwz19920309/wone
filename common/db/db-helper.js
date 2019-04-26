@@ -137,7 +137,7 @@ class DBHelper {
   }
 
   static async getPrizeListNotInId(prizesId) {
-    let sql = 'select id, name, note FROM prize where id not in (?)'
+    let sql = 'select id, name, note, icon FROM prize where id not in (?)'
     let [rows] = await DataDb.query(sql, [prizesId])
     return { rows: rows }
   }
@@ -165,8 +165,8 @@ class DBHelper {
   }
 
   static async getPrizeById(params) {
-    let [rows] = await DataDb.query('SELECT name, note FROM prize where id = ?', [params.id])
-    return rows
+    let [rows] = await DataDb.query('SELECT name, note, icon FROM prize where id = ?', [params.id])
+    return rows[0]
   }
 
   static async bulkSaveSceneSign(params) {
@@ -207,7 +207,7 @@ class DBHelper {
   }
 
   static async getAwardRecordList(params) {
-    let sql = 'SELECT a.id as record_id, a.uid as uid, a.created_at as created_at, b.name as prize_name, b.note as prize_note, c.id as scenesign_id from award_record a ' +
+    let sql = 'SELECT a.id as record_id, a.uid as uid, a.number as number, a.created_at as created_at, b.name as prize_name, b.note as prize_note, c.id as scenesign_id from award_record a ' +
       'LEFT JOIN prize b on a.prize_id = b.id LEFT JOIN scene_sign c on c.id = a.scenesign_id'
     let [rows] = await DataDb.query((sql + ' limit ?, ?'), [(params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(1) as total from award_record')
@@ -242,7 +242,7 @@ class DBHelper {
     try {
       await con.beginTransaction()
       if (params.prizes && params.prizes.length) {
-        await con.query('INSERT INTO award_record (uid, prize_id, scenesign_id, created_at) VALUES ?', [params.prizes])
+        await con.query('INSERT INTO award_record (uid, prize_id, number, scenesign_id, created_at) VALUES ?', [params.prizes])
       }
       await con.query('INSERT INTO sign_record SET ?', [params.record])
       await con.commit()

@@ -40,8 +40,8 @@ const getSumUserSignRcord = async (params) => {
  */
 const getTodaySignonPrizes = async (params) => {
   let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
-  let prizeIds = []
-  for (let m = 0;m < signonList.rows.length;m++) {
+  let prizes = []
+  for (let m = 0; m < signonList.rows.length; m++) {
     let signon = signonList.rows[m]
     let startAt = moment(signon.start_at).valueOf()
     let endAt = moment(signon.end_at).valueOf()
@@ -49,26 +49,26 @@ const getTodaySignonPrizes = async (params) => {
     if ((nowAt < endAt) && (nowAt > startAt)) { // 签到活动时间内
       switch (signon.checkintype_id) {
         case 1:
-          let prizeId = signon.prizes_text ? (signon.prizes_text.prizes[0] ? (signon.prizes_text.prizes[0][1] ? signon.prizes_text.prizes[0][1] : 0) : 0) : 0
-          if (prizeId) {
-            prizeIds = prizeIds.concat(prizeId)
+          let p = signon.prizes_text ? (signon.prizes_text.prizes[0] ? (signon.prizes_text.prizes[0][1] ? signon.prizes_text.prizes[0][1] : 0) : 0) : 0
+          if (p) {
+            prizes = prizes.concat(p)
           }
           break
         case 2:
           let startDate = new Date(Date.parse(signon.start_at.replace(/-/g, '/'))).getDate()
           let index = new Date().getDate() - startDate + 1
-          let ids = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][index] ? signon.prizes_text.prizes[0][index] : [] : []) : []
-          prizeIds = prizeIds.concat(ids)
+          let ps = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][index] ? signon.prizes_text.prizes[0][index] : [] : []) : []
+          prizes = prizes.concat(ps)
           break
         case 3:
           let signSum = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signon.start_at, end_at: signon.end_at })
           let nIndex = signSum + 1
-          let pIds = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][nIndex] ? signon.prizes_text.prizes[0][nIndex] : [] : []) : []
-          prizeIds = prizeIds.concat(pIds)
+          let lps = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][nIndex] ? signon.prizes_text.prizes[0][nIndex] : [] : []) : []
+          prizes = prizes.concat(lps)
       }
     }
   }
-  return prizeIds
+  return prizes
 }
 /**
   * 获取签到类型列表
@@ -89,9 +89,8 @@ const userSignonAward = async (params) => {
  */
 const getSelfSignon = async (params) => {
   let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
-  let prizeIds = []
   let validSignons = []
-  for (let m = 0;m < signonList.rows.length;m++) {
+  for (let m = 0; m < signonList.rows.length; m++) {
     let signon = signonList.rows[m]
     let startAt = moment(signon.start_at).valueOf()
     let endAt = moment(signon.end_at).valueOf()
@@ -109,7 +108,32 @@ const getSelfSignon = async (params) => {
           }
           signon.completeCount = yearstodayRecord ? completeCount : 0
           break
-        case 3:
+        case 3: // 累计签到
+          let startAt
+          let endAt
+          switch (signon.cycle_text.type) {
+            case 2: // 周
+              startAt = moment().startOf('week')
+              endAt = moment(startAt).add(1, 'days')
+              startAt = moment().endOf('week')
+              endAt = moment(endAt).add(1, 'days')
+              break
+            case 3: // 月
+              startAt = moment().startOf('month')
+              endAt = moment().endOf('month')
+              break
+            case 4: // 年
+              startAt = moment().startOf('year')
+              endAt = moment().endOf('year')
+              break
+            case 5: // 自定义
+              let days = moment().diff(signon.start_at, 'days')
+              let less = days % signon.cycle_text.number
+              startAt = moment().subtract(less, 'day').format('YYYY-MM-DD')
+              endAt = moment().format('YYYY-MM-DD')
+              break
+          }
+          // let days = moment().diff(signon.start_at, 'days')
           let signSum = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signon.start_at, end_at: signon.end_at })
           signon.completeCount = signSum
       }

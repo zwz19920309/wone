@@ -29,7 +29,7 @@ apiRouter.post('/bulkDeleteConsumes', signonCtrl.bulkDeleteConsumes)
 // 用户签到
 apiRouter.post('/userSignon', signonCtrl.userSignon)
 //  getSelfSignon
-apiRouter.get('/getSelfSignon', signonCtrl.getSelfSignon)
+apiRouter.post('/getSelfSignon', signonCtrl.getSelfSignon)
 module.exports = router => {
   router.use('/admin/signon', apiRouter.routes(), apiRouter.allowedMethods())
 }
