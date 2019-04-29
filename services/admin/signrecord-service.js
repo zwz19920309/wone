@@ -43,7 +43,7 @@ const getSumUserSignRcord = async (params) => {
 const getTodaySignonPrizes = async (params) => {
   let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
   let result = { prizes: [], continueSign: {} }
-  for (let m = 0; m < signonList.rows.length; m++) {
+  for (let m = 0;m < signonList.rows.length;m++) {
     let signon = signonList.rows[m]
     let startAt = moment(signon.start_at).valueOf()
     let endAt = moment(signon.end_at).valueOf()
@@ -107,7 +107,7 @@ const userSignonAward = async (params) => {
 const getSelfSignon = async (params) => {
   let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
   let validSignons = []
-  for (let m = 0; m < signonList.rows.length; m++) {
+  for (let m = 0;m < signonList.rows.length;m++) {
     let signon = signonList.rows[m]
     let signonStartAt = moment(signon.start_at).valueOf()
     let signondAt = moment(signon.end_at).valueOf()
@@ -139,8 +139,18 @@ const getSelfSignon = async (params) => {
           if (signon.extra_text && signon.extra_text.resign && signon.extra_text.resign.isResign === 2) { // 支持补签
             let signRecord = await continuesignService.getContinueSignRcord({ scenesign_id: signon.scenesign_id, last_award_date: yearsToday })
             if (signRecord) {
-              let betDays = moment().subtract(1, 'days').diff(moment(signRecord.first_sign_date), 'days') + 1
+              let betDays = moment().subtract(1, 'days').diff(moment(signRecord.first_sign_date), 'days') + 1 //
+              let dates = []
+              for (let m = 1;m <= betDays;m++) {
+                dates.push(moment().subtract(m, 'days').format('YYYY-MM-DD'))
+              }
+              let unmatchDates = ToolUtil.removeDuplication(dates, signon.extra_text.resign.resignDates) // 排除可补签日期后的日期
+              let signRecordDays = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signRecord.first_sign_date, end_at: yearsToday }) // 新周期统计的签到次数
               // let allowDays = 
+              console.log('@signRecordDays: ', signRecordDays)
+              if (unmatchDates > signRecordDays) { // 排除可补签日期后， 签到次数少于排除后的日期，判断为断签
+                console.log('断签')
+              }
             }
           }
           break
