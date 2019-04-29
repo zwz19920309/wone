@@ -41,12 +41,12 @@ const getPrizeIndex = (dateType, startDate, number) => {
       endAt = moment(endAt).add(1, 'days').format('YYYY-MM-DD')
       break
     case 3: // 月
-      startAt = moment().startOf('month')
-      endAt = moment().endOf('month')
+      startAt = moment().startOf('month').format('YYYY-MM-DD')
+      endAt = moment().endOf('month').format('YYYY-MM-DD')
       break
     case 4: // 年
-      startAt = moment().startOf('year')
-      endAt = moment().endOf('year')
+      startAt = moment().startOf('year').format('YYYY-MM-DD')
+      endAt = moment().endOf('year').format('YYYY-MM-DD')
       break
     case 5: // 自定义
       days = moment().diff(startDate, 'days')

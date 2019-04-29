@@ -88,7 +88,7 @@ class DBHelper {
 
   static async getSignonListInId(params) {
     // let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id in (select distinct signon_id from scene_sign where scene_id = ?)'
-    let sql = 'SELECT a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE scene_id = ?'
+    let sql = 'SELECT a.id as scenesign_id, a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE scene_id = ?'
     let [rows] = await DataDb.query(sql, params.sceneId)
     return { total: rows.length, rows: rows }
   }
@@ -219,7 +219,7 @@ class DBHelper {
     return rows
   }
 
-  static async getUserSignRcord(params) {
+  static async getUserSignRecord(params) {
     let [rows] = await DataDb.query('SELECT * FROM sign_record WHERE uid  = ? and scene_id = ? and created_at = ? limit 1', [params.uid, params.scene_id, params.created_at])
     let res = rows.length ? rows[0] : null
     return res
@@ -237,12 +237,32 @@ class DBHelper {
     return res
   }
 
+  static async getContinueSignRcord(params) {
+    let [rows] = await DataDb.query('SELECT first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? ', [params.scenesign_id])
+    let res = rows.length ? rows[0] : null
+    return res
+  }
+
+  static async getContinueSignRcordByAward(params) {
+    let [rows] = await DataDb.query('SELECT first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? and last_award_date = ?', [params.scenesign_id, params.last_award_date])
+    let res = rows.length ? rows[0] : null
+    return res
+  }
+
   static async userSignonAward(params) {
     let con = await DataDb.getConnection()
     try {
       await con.beginTransaction()
       if (params.prizes && params.prizes.length) {
         await con.query('INSERT INTO award_record (uid, prize_id, number, scenesign_id, created_at) VALUES ?', [params.prizes])
+      }
+      if (params.continueDate.first_sign_date) {
+        let [[total]] = await con.query('SELECT count(1) as total from continue_sign where scenesign_id = ?', [params.continueDate.scenesign_id])
+        if (total.total) {
+          await con.query('UPDATE continue_sign SET first_sign_date = ? where scenesign_id = ?', [params.continueDate.first_sign_date, params.continueDate.scenesign_id])
+        } else {
+          await con.query('INSERT INTO continue_sign SET ?', [{ scenesign_id: params.continueDate.scenesign_id, first_sign_date: params.continueDate.first_sign_date }])
+        }
       }
       await con.query('INSERT INTO sign_record SET ?', [params.record])
       await con.commit()
