@@ -80,6 +80,12 @@ class DBHelper {
     return rows
   }
 
+  static async getSignonById(params) {
+    let [rows] = await DataDb.query('SELECT * FROM signon WHERE id = ? limit 1', [params.id])
+    let res = rows.length ? rows[0] : null
+    return res
+  }
+
   static async getSignonList(params) {
     let [rows] = await DataDb.query('SELECT a.id as id, a.name as name, cycle_text, extra_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(*) as total FROM signon')
@@ -172,6 +178,12 @@ class DBHelper {
   static async bulkSaveSceneSign(params) {
     let [rows] = await DataDb.query('INSERT INTO scene_sign (scene_id, signon_id, start_at, end_at) VALUES ?', [params])
     return rows
+  }
+
+  static async getSceneSignById(params) {
+    let [rows] = await DataDb.query('SELECT * FROM scene_sign WHERE id = ?', [params.id])
+    let res = rows.length ? rows[0] : []
+    return res
   }
 
   static async bulkDekleteSceneSign(params) {

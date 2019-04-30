@@ -204,6 +204,21 @@ const userSignon = async (ctx) => {
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: pRes.prizes }, 'SUCCESS')
 }
 
+const reSignon = async (ctx) => {
+  let { uid, scenesignId, signDate } = ctx.request.body
+  let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: scenesignId, created_at: signDate })
+  if (signRecord) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '该日已签到'))
+  }
+  let pRes = await signrecordService.getUserResignPrizes({ uid: uid, scenesignId: '137', resignDate: '2019-04-28' })
+  let params = { prizes: [], record: { uid: uid, scene_id: 37, created_at: '2019-04-28' }, continueDate: pRes.conSignRecord }
+  pRes.prizes.forEach(prize => {
+    params.prizes.push([uid, prize.prizeId, prize.prizeNum, 37, '2019-04-28'])
+  })
+  let res = await signrecordService.userSignonAward(params)
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: res }, 'SUCCESS')
+}
+
 // 用户签到累计信息
 const getSelfSignon = async (ctx) => {
   let { uid, sceneId } = ctx.request.body
@@ -227,5 +242,6 @@ module.exports = {
   bulkAddConsumes,
   bulkDeleteConsumes,
   userSignon,
+  reSignon,
   getSelfSignon
 }
