@@ -36,26 +36,6 @@ const getSumUserSignRcord = async (params) => {
 }
 
 /**
-  * 用户补签
-  * @method  userResignon
-  * @param  {object} params - 参数
-  * @return {object} 签到类型列表
- */
-const getUserResignPrizes = async (params) => {
-  let scenesign = await DBHelper.getSceneSignById({ id: params.scenesignId })
-  let signon = await DBHelper.getSignonById({ id: scenesign.signon_id })
-  let index = 1
-  let result = { prizes: [], conSignRecord: {} }
-  let conSignRecord = await continuesignService.getContinueSignRcord({ scenesign_id: params.scenesignId })
-  if ((moment(conSignRecord.first_sign_date).isBefore(params.resignDate))) { // 补签日期在最新签到周期之内
-    index = (moment(params.resignDate).diff(moment(conSignRecord.first_sign_date), 'days')) + 1
-  }
-  let ps = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][index] ? signon.prizes_text.prizes[0][index] : [] : []) : []
-  result.prizes = result.prizes.concat(ps)
-  return result
-}
-
-/**
   * 今天签到得到奖励
   * @method getTodaySignonPrizes
   * @param  {object} params -参数
@@ -68,7 +48,7 @@ const getTodaySignonPrizes = async (params) => {
     let signon = signonList.rows[m]
     let startAt = moment(signon.start_at).valueOf()
     let endAt = moment(signon.end_at).valueOf()
-    let nowAt = moment().valueOf()
+    let nowAt = moment(params.nowDate).valueOf()
     if ((nowAt < endAt) && (nowAt > startAt)) { // 签到活动时间内
       switch (signon.checkintype_id) {
         case 1:
@@ -79,23 +59,23 @@ const getTodaySignonPrizes = async (params) => {
           break
         case 2:
           let index = 1
-          let yearsToday = moment().subtract(1, 'days').format('YYYY-MM-DD')
+          let yearsToday = moment(params.nowDate).subtract(1, 'days').format('YYYY-MM-DD')
           let yearsToadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: yearsToday })
           if (yearsToadyRecord) { // 未断签
             // 签到新周期初始日期以及上一周期奖励日期
             let signRecord = await continuesignService.getContinueSignRcord({ scenesign_id: signon.scenesign_id })
             if (signRecord) {
               if (signRecord.last_award_date) {
-                if (!(moment(signRecord.last_award_date).format('YYYY-MM-DD') === moment().subtract(1, 'days').format('YYYY-MM-DD'))) {
-                  index = moment().diff(moment(signRecord.first_sign_date), 'days') + 1
+                if (!(moment(signRecord.last_award_date).format('YYYY-MM-DD') === moment(params.nowDate).subtract(1, 'days').format('YYYY-MM-DD'))) {
+                  index = moment(params.nowDate).diff(moment(signRecord.first_sign_date), 'days') + 1
                 }
               } else {
-                index = moment().diff(moment(signRecord.first_sign_date), 'days') + 1
+                index = moment(params.nowDate).diff(moment(signRecord.first_sign_date), 'days') + 1
               }
             }
           }
           if ((index === 1) || (index === signon.cycle_text.number)) { // 新周期第一次签到日期 以及 上一期介素结束日
-            index === 1 ? result.continueSign.first_sign_date = moment().format('YYYY-MM-DD') : result.continueSign.last_award_date = moment().format('YYYY-MM-DD')
+            index === 1 ? result.continueSign.first_sign_date = moment(params.nowDate).format('YYYY-MM-DD') : result.continueSign.last_award_date = moment(params.nowDate).format('YYYY-MM-DD')
             result.continueSign.scenesign_id = signon.scenesign_id
           }
           let ps = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][index] ? signon.prizes_text.prizes[0][index] : [] : []) : []
@@ -148,6 +128,9 @@ const getSelfSignon = async (params) => {
           let yearsToadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: yearsToday })
           // 查出新周期第一次签到日期
           let signRecord = await continuesignService.getContinueSignRcord({ scenesign_id: signon.scenesign_id })
+          if (!signRecord) { // 无第一次签到时间，默认为新周期第一次访问
+            break
+          }
           // 可补签条件下的断签判断
           // (1) 昨天没签到而且昨天不是可补签日期
           // (2) 昨天没签到但是可补签日期 首先查出（a: 从昨天起的连续可补签日期天数) ( b: 昨天到最新签到周期第一天的间隔天数) (c:  昨天到最新签到周期第一天的实际签到天数) （c < b-a）为断签
@@ -229,6 +212,5 @@ module.exports = {
   getTodaySignonPrizes,
   userSignonAward,
   getUserSignRecord,
-  getSelfSignon,
-  getUserResignPrizes
+  getSelfSignon
 }

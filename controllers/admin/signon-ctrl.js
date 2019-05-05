@@ -64,8 +64,7 @@ const bulkDeleteSignOn = async (ctx) => {
 // 根据场景id获取签到类型类表
 const getSignonListBySceneId = async (ctx) => {
   let { sceneId, type, page, pageSize } = ctx.request.body
-  let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
-  let params = { sceneId: sceneId }
+  let params = { sceneId: sceneId, page: page || 1, pageSize: pageSize || 10 }
   let scene = await sceneService.findOneScene({ id: sceneId })
   let signonList = (parseInt(type) === 1) ? await signonService.getSignonNotInList(params) : await signonService.getSignonInList(params)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, scene: scene, total: signonList.total }, 'SUCCESS')
@@ -189,7 +188,7 @@ const userSignon = async (ctx) => {
   if (signRecord) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
   }
-  let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId })
+  let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: moment().format('YYYY-MM-DD') })
   // if (!prizeIds.length) {
   //   return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
   // }
@@ -205,15 +204,15 @@ const userSignon = async (ctx) => {
 }
 
 const reSignon = async (ctx) => {
-  let { uid, scenesignId, signDate } = ctx.request.body
-  let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: scenesignId, created_at: signDate })
+  let { uid, scenesignId, resignDate, sceneId } = ctx.request.body
+  let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: sceneId, created_at: resignDate })
   if (signRecord) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '该日已签到'))
   }
-  let pRes = await signrecordService.getUserResignPrizes({ uid: uid, scenesignId: '137', resignDate: '2019-04-28' })
-  let params = { prizes: [], record: { uid: uid, scene_id: 37, created_at: '2019-04-28' }, continueDate: pRes.conSignRecord }
+  let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: resignDate })
+  let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: resignDate }, continueDate: pRes.continueSign }
   pRes.prizes.forEach(prize => {
-    params.prizes.push([uid, prize.prizeId, prize.prizeNum, 37, '2019-04-28'])
+    params.prizes.push([uid, prize.prizeId, prize.prizeNum, scenesignId, moment().format('YYYY-MM-DD')])
   })
   let res = await signrecordService.userSignonAward(params)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: res }, 'SUCCESS')

@@ -31,7 +31,7 @@ apiRouter.post('/userSignon', signonCtrl.userSignon)
 //  getSelfSignon
 apiRouter.post('/getSelfSignon', signonCtrl.getSelfSignon)
 // 用户重新签到
-apiRouter.get('/reSignon', signonCtrl.reSignon)
+apiRouter.post('/reSignon', signonCtrl.reSignon)
 module.exports = router => {
   router.use('/admin/signon', apiRouter.routes(), apiRouter.allowedMethods())
 }
