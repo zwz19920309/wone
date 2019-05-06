@@ -11,7 +11,6 @@ const getDateTypeList = async (ctx) => {
   } else {
     dateTypeList = await datetypeService.getDateTypeListByType(type)
   }
-  console.log('@getdateTypeList:--------- ')
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: dateTypeList }, 'SUCCESS')
 }
 

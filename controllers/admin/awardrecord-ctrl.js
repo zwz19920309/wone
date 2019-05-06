@@ -1,6 +1,6 @@
 const HttpResult = require('../../common/http/http-result')
 const awardrecordService = require('../../services/admin/awardrecord-service')
-// 获取奖品类表
+// 获取奖励记录
 const getAwardRecordList = async (ctx) => {
   let { page, pageSize } = ctx.request.body
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }

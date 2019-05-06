@@ -43,7 +43,7 @@ const getSumUserSignRcord = async (params) => {
  */
 const getTodaySignonPrizes = async (params) => {
   let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
-  let result = { prizes: [], continueSign: { first_sign_date: '', last_award_date: '' } }
+  let result = { prizes: [], continueSign: { uid: params.uid, first_sign_date: '', last_award_date: '' } }
   for (let m = 0; m < signonList.rows.length; m++) {
     let signon = signonList.rows[m]
     let startAt = moment(signon.start_at).valueOf()
@@ -123,7 +123,7 @@ const getSelfSignon = async (params) => {
           break
         case 2: // 连续签到
           signon.completeCount = 0
-          let signRecord = await continuesignService.getContinueSignRcord({ scenesign_id: signon.scenesign_id })
+          let signRecord = await continuesignService.getContinueSignRcord({ uid: params.uid, scenesign_id: signon.scenesign_id })
           if (!signRecord) { // 无第一次签到时间，默认为新周期第一次访问
             break
           }

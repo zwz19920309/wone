@@ -254,13 +254,13 @@ class DBHelper {
   }
 
   static async getContinueSignRcord(params) {
-    let [rows] = await DataDb.query('SELECT first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? ', [params.scenesign_id])
+    let [rows] = await DataDb.query('SELECT uid, first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? and uid = ? ', [params.scenesign_id, params.uid])
     let res = rows.length ? rows[0] : null
     return res
   }
 
   static async getContinueSignRcordByAward(params) {
-    let [rows] = await DataDb.query('SELECT first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? and last_award_date = ?', [params.scenesign_id, params.last_award_date])
+    let [rows] = await DataDb.query('SELECT uid, first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? and last_award_date = ? and uid = ?', [params.scenesign_id, params.last_award_date, params.uid])
     let res = rows.length ? rows[0] : null
     return res
   }
@@ -273,11 +273,11 @@ class DBHelper {
         await con.query('INSERT INTO award_record (uid, prize_id, number, scenesign_id, created_at) VALUES ?', [params.prizes])
       }
       if (params.continueDate.first_sign_date) {
-        let [[total]] = await con.query('SELECT count(1) as total from continue_sign where scenesign_id = ?', [params.continueDate.scenesign_id])
+        let [[total]] = await con.query('SELECT count(1) as total from continue_sign where scenesign_id = ? and uid =?', [params.continueDate.scenesign_id, params.uid])
         if (total.total) {
-          await con.query('UPDATE continue_sign SET first_sign_date = ? where scenesign_id = ?', [params.continueDate.first_sign_date, params.continueDate.scenesign_id])
+          await con.query('UPDATE continue_sign SET first_sign_date = ? where scenesign_id = ? and uid = ?', [params.continueDate.first_sign_date, params.continueDate.scenesign_id, params.continueDate.uid])
         } else {
-          await con.query('INSERT INTO continue_sign SET ?', [{ scenesign_id: params.continueDate.scenesign_id, first_sign_date: params.continueDate.first_sign_date }])
+          await con.query('INSERT INTO continue_sign SET ?', [{ uid: params.continueDate.uid, scenesign_id: params.continueDate.scenesign_id, first_sign_date: params.continueDate.first_sign_date }])
         }
       }
       await con.query('INSERT INTO sign_record SET ?', [params.record])

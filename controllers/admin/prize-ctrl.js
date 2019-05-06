@@ -9,7 +9,6 @@ const getPrizeList = async (ctx) => {
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
   let { total, rows } = await prizeService.getPrizeList(pageInfo)
   ToolUtil.prefixImgUrl(rows)
-  console.log('@getprizeList:--------- ')
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: rows, total: total }, 'SUCCESS')
 }
 
@@ -21,9 +20,8 @@ const addPrize = async (ctx) => {
   let prize = await prizeService.addPrize({ name: name, note: note, icon: iconPath })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, prize, 'SUCCESS')
 }
-// updatePrize
 
-// 增加奖品
+// 修改奖品
 const updatePrize = async (ctx) => {
   let { note, name, id } = ctx.request.body
   let files = ctx.request.files

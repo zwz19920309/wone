@@ -5,7 +5,6 @@ const signonService = require('../../services/admin/signon-service')
 const sceneService = require('../../services/admin/scene-service')
 const datetypeService = require('../../services/admin/datetype-service')
 const prizeService = require('../../services/admin/prize-service')
-const awardrecordService = require('../../services/admin/awardrecord-service')
 const signrecordService = require('../../services/admin/signrecord-service')
 
 // 获取签到类型类表
@@ -19,17 +18,22 @@ const getSignonList = async (ctx) => {
 // 通过id获取签到类型
 const getSignonById = async (ctx) => {
   let { id } = ctx.request.body
+  if (!id) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signon = await signonService.getSignonById({ id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, signon, 'SUCCESS')
 }
 
 // 增加签到类型
 const addSignon = async (ctx) => {
-  let { name, checkinType, dateType, number, startAt, endAt, desc, formId, isResign, resignDates, cost } = ctx.request.body
-  console.log('@startAt: ', startAt)
+  let { name, checkinType, dateType, number, desc, formId, isResign, resignDates, cost } = ctx.request.body
+  if (!name || !checkinType || !dateType || !desc) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let dateTypeObj = await datetypeService.getOneDateTypeByCons({ type: dateType })
-  let extraText = parseInt(isResign) === 2 ? { resign: { isResign: isResign, formId: formId, cost: cost, resignDates: resignDates || [] } } : {}
-  let signonData = { name: name, checkintype_id: checkinType, rule_desc: desc, cycle_text: JSON.stringify({ type: dateType, name: dateTypeObj[0].name, number: number || 0 }), extra_text: JSON.stringify(extraText), start_at: startAt, end_at: endAt }
+  let extraText = (isResign && parseInt(isResign) === 2) ? { resign: { isResign: isResign, formId: formId, cost: cost, resignDates: resignDates || [] } } : {}
+  let signonData = { name: name, checkintype_id: checkinType, rule_desc: desc, cycle_text: JSON.stringify({ type: dateType, name: dateTypeObj[0].name, number: number || 0 }), extra_text: JSON.stringify(extraText) }
   let signon = await signonService.addSignon(signonData)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, signon, 'SUCCESS')
 }
@@ -37,6 +41,9 @@ const addSignon = async (ctx) => {
 // 更新签到类型
 const updateSignonById = async (ctx) => {
   let { id, name, checkinTypeId, dateTypeId, number, ruleDesc } = ctx.request.body
+  if (!id) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signon = await signonService.getSignonById({ id: id })
   let params = { name: name || signon.name, checkintype_id: checkinTypeId || signon.checkintype_id, rule_desc: ruleDesc || signon.rule_desc }
   if (dateTypeId) {
@@ -50,6 +57,9 @@ const updateSignonById = async (ctx) => {
 // 删除签到类型
 const deleteSignon = async (ctx) => {
   let { id } = ctx.request.body
+  if (!id) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let result = await signonService.deleteSignon({ ids: [id] })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { res: result }, 'SUCCESS')
 }
@@ -57,6 +67,9 @@ const deleteSignon = async (ctx) => {
 // 批删除签到模板
 const bulkDeleteSignOn = async (ctx) => {
   let { ids } = ctx.request.body
+  if (!ids) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let scenesign = await signonService.deleteSignon({ ids: ids })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, scenesign, 'SUCCESS')
 }
@@ -64,6 +77,9 @@ const bulkDeleteSignOn = async (ctx) => {
 // 根据场景id获取签到类型类表
 const getSignonListBySceneId = async (ctx) => {
   let { sceneId, type, page, pageSize } = ctx.request.body
+  if (!sceneId) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let params = { sceneId: sceneId, page: page || 1, pageSize: pageSize || 10 }
   let scene = await sceneService.findOneScene({ id: sceneId })
   let signonList = (parseInt(type) === 1) ? await signonService.getSignonNotInList(params) : await signonService.getSignonInList(params)
@@ -73,6 +89,9 @@ const getSignonListBySceneId = async (ctx) => {
 // 签到模板批量添加奖品列表
 const bulkAddPrizes = async (ctx) => {
   let { id, number, prizeId, prizeNum } = ctx.request.body
+  if (!id || !number || !prizeId || !prizeNum) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signon = await signonService.getSignonById({ id: id })
   let prizesText = signon.prizes_text || {}
   if (!prizesText.prizes) {
@@ -89,6 +108,9 @@ const bulkAddPrizes = async (ctx) => {
 // 签到模板批量删除奖品列表
 const bulkDeletePrizes = async (ctx) => {
   let { id, number, prizeIds } = ctx.request.body
+  if (!id || !number || !prizeIds) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signon = await signonService.getSignonById({ id: id })
   let prizesText = signon.prizes_text
   if (!(prizesText.prizes && prizesText.prizes[0] && prizesText.prizes[0][number])) {
@@ -109,6 +131,9 @@ const bulkDeletePrizes = async (ctx) => {
 // 通过id,number, type获取模板的可选择礼品列表
 const getPrizesBySignonById = async (ctx) => {
   let { id, number } = ctx.request.body
+  if (!id || !number) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signon = await signonService.getSignonById({ id: id })
   let prizesText = signon.prizes_text || {}
   let existPrizes = []
@@ -154,6 +179,9 @@ const getConsumesBySignonById = async (ctx) => {
 // 签到模板批量添加消耗奖品列表
 const bulkAddConsumes = async (ctx) => {
   let { id, date, prizeIds } = ctx.request.body
+  if (!id || !date || !prizeIds) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signon = await signonService.getSignonById({ id: id })
   let extraText = signon.extra_text || {}
   if (!extraText.consumes) {
@@ -170,6 +198,9 @@ const bulkAddConsumes = async (ctx) => {
 // 签到模板批量删除消耗奖品列表
 const bulkDeleteConsumes = async (ctx) => {
   let { id, date, prizeIds } = ctx.request.body
+  if (!id || !date || !prizeIds) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signon = await signonService.getSignonById({ id: id })
   let extraText = signon.extra_text
   if (!(extraText.consumes && extraText.consumes[0] && extraText.consumes[0][date])) {
@@ -183,15 +214,15 @@ const bulkDeleteConsumes = async (ctx) => {
 // 用户当日签到
 const userSignon = async (ctx) => {
   let { uid, sceneId } = ctx.request.body
+  if (!uid || !sceneId) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let nowDate = moment().format('YYYY-MM-DD')
   let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: sceneId, created_at: nowDate })
   if (signRecord) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
   }
   let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: moment().format('YYYY-MM-DD HH:mm:ss') })
-  // if (!prizeIds.length) {
-  //   return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
-  // }
   let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: nowDate }, continueDate: pRes.continueSign }
   pRes.prizes.forEach(prize => {
     params.prizes.push([uid, prize.prizeId, prize.prizeNum, sceneId, nowDate])
@@ -202,9 +233,12 @@ const userSignon = async (ctx) => {
   }
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: pRes.prizes }, 'SUCCESS')
 }
-
+// 用户补签
 const reSignon = async (ctx) => {
-  let { uid, scenesignId, resignDate, sceneId } = ctx.request.body
+  let { uid, resignDate, sceneId } = ctx.request.body
+  if (!uid || !resignDate || !sceneId) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: sceneId, created_at: resignDate })
   if (signRecord) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '该日已签到'))
@@ -212,7 +246,7 @@ const reSignon = async (ctx) => {
   let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: resignDate })
   let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: resignDate }, continueDate: pRes.continueSign }
   pRes.prizes.forEach(prize => {
-    params.prizes.push([uid, prize.prizeId, prize.prizeNum, scenesignId, moment().format('YYYY-MM-DD')])
+    params.prizes.push([uid, prize.prizeId, prize.prizeNum, sceneId, moment().format('YYYY-MM-DD')])
   })
   let res = await signrecordService.userSignonAward(params)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: res }, 'SUCCESS')
@@ -221,6 +255,9 @@ const reSignon = async (ctx) => {
 // 用户签到累计信息
 const getSelfSignon = async (ctx) => {
   let { uid, sceneId } = ctx.request.body
+  if (!uid || !sceneId) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
   let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: sceneId, created_at: moment().format('YYYY-MM-DD') })
   let signons = await signrecordService.getSelfSignon({ uid: uid, scene_id: sceneId })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signons, isSignon: (signRecord ? 1 : 0) }, 'SUCCESS')
