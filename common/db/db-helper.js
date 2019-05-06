@@ -94,7 +94,10 @@ class DBHelper {
 
   static async getSignonListInId(params) {
     // let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id in (select distinct signon_id from scene_sign where scene_id = ?)'
-    let sql = 'SELECT a.id as scenesign_id, a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, extra_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0 limit ?,?'
+    let sql = 'SELECT a.id as scenesign_id, a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, extra_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0'
+    if (params.page && params.pageSize) {
+      sql += '  limit ?,?'
+    }
     let [rows] = await DataDb.query(sql, [params.sceneId, (params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(1) as total from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0', [params.sceneId])
     return { total: total[0][0].total, rows: rows }

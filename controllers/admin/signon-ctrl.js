@@ -188,7 +188,7 @@ const userSignon = async (ctx) => {
   if (signRecord) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
   }
-  let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: moment().format('YYYY-MM-DD') })
+  let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: moment().format('YYYY-MM-DD HH:mm:ss') })
   // if (!prizeIds.length) {
   //   return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
   // }

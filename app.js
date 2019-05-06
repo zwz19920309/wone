@@ -74,4 +74,6 @@ app.use(index.routes(), index.allowedMethods())
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 })
+app.listen(process.env.PORT || 3001)
+console.log('OT App started at port 3002...')
 module.exports = app

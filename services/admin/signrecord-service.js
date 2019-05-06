@@ -49,7 +49,7 @@ const getTodaySignonPrizes = async (params) => {
     let startAt = moment(signon.start_at).valueOf()
     let endAt = moment(signon.end_at).valueOf()
     let nowAt = moment(params.nowDate).valueOf()
-    if ((nowAt < endAt) && (nowAt > startAt)) { // 签到活动时间内
+    if ((nowAt < endAt) && (nowAt >= startAt)) { // 签到活动时间内
       switch (signon.checkintype_id) {
         case 1:
           let p = signon.prizes_text ? (signon.prizes_text.prizes[0] ? (signon.prizes_text.prizes[0][1] ? signon.prizes_text.prizes[0][1] : 0) : 0) : 0
@@ -123,14 +123,20 @@ const getSelfSignon = async (params) => {
           break
         case 2: // 连续签到
           signon.completeCount = 0
-          let yearsToday = moment().subtract(1, 'days').format('YYYY-MM-DD')
-          // 昨天签到情况
-          let yearsToadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: yearsToday })
-          // 查出新周期第一次签到日期
           let signRecord = await continuesignService.getContinueSignRcord({ scenesign_id: signon.scenesign_id })
           if (!signRecord) { // 无第一次签到时间，默认为新周期第一次访问
             break
           }
+          let toadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: moment().format('YYYY-MM-DD') })
+          if (toadyRecord) { // 今天已经签到
+            let totalCount = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signRecord.first_sign_date, end_at: moment().format('YYYY-MM-DD') }) // 新周期开始到今天结束统计的签到次数
+            signon.completeCount = totalCount
+            break
+          }
+          let yearsToday = moment().subtract(1, 'days').format('YYYY-MM-DD')
+          // 昨天签到情况
+          let yearsToadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: yearsToday })
+          // 查出新周期第一次签到日期
           // 可补签条件下的断签判断
           // (1) 昨天没签到而且昨天不是可补签日期
           // (2) 昨天没签到但是可补签日期 首先查出（a: 从昨天起的连续可补签日期天数) ( b: 昨天到最新签到周期第一天的间隔天数) (c:  昨天到最新签到周期第一天的实际签到天数) （c < b-a）为断签
