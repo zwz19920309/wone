@@ -273,7 +273,7 @@ class DBHelper {
         await con.query('INSERT INTO award_record (uid, prize_id, number, scenesign_id, created_at) VALUES ?', [params.prizes])
       }
       if (params.continueDate.first_sign_date) {
-        let [[total]] = await con.query('SELECT count(1) as total from continue_sign where scenesign_id = ? and uid =?', [params.continueDate.scenesign_id, params.uid])
+        let [[total]] = await con.query('SELECT count(1) as total from continue_sign where scenesign_id = ? and uid =?', [params.continueDate.scenesign_id, params.continueDate.uid])
         if (total.total) {
           await con.query('UPDATE continue_sign SET first_sign_date = ? where scenesign_id = ? and uid = ?', [params.continueDate.first_sign_date, params.continueDate.scenesign_id, params.continueDate.uid])
         } else {

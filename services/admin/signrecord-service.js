@@ -63,7 +63,7 @@ const getTodaySignonPrizes = async (params) => {
           let yearsToadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: yearsToday })
           if (yearsToadyRecord) { // 未断签
             // 签到新周期初始日期以及上一周期奖励日期
-            let signRecord = await continuesignService.getContinueSignRcord({ scenesign_id: signon.scenesign_id })
+            let signRecord = await continuesignService.getContinueSignRcord({ uid: params.uid, scenesign_id: signon.scenesign_id })
             if (signRecord) {
               if (signRecord.last_award_date) {
                 if (!(moment(signRecord.last_award_date).format('YYYY-MM-DD') === moment(params.nowDate).subtract(1, 'days').format('YYYY-MM-DD'))) {
