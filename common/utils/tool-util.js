@@ -1,3 +1,4 @@
+const crypto = require('crypto')
 const config = require('../../config/config')
 const moment = require('moment')
 const removeDuplication = (arr1, arr2) => {
@@ -60,9 +61,21 @@ const getPrizeIndex = (dateType, startDate, number) => {
     endAt: endAt
   }
 }
+
+const randomString = (len) => {
+  return crypto.randomBytes(Math.ceil(len / 2)).toString('hex').slice(0, len)
+}
+
+const cryptoPassFunc = (password) => {
+  const md5 = crypto.createHash('md5')
+  return md5.update(password).digest('hex')
+}
+
 module.exports = {
   removeDuplication,
   attributeCount,
   prefixImgUrl,
-  getPrizeIndex
+  getPrizeIndex,
+  randomString,
+  cryptoPassFunc
 }

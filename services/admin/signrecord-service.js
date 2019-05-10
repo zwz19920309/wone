@@ -122,7 +122,7 @@ const getSelfSignon = async (params) => {
         case 1: // 每日签到
           break
         case 2: // 连续签到
-          signon.completeCount = 0
+          signon.complete_count = 0
           let signRecord = await continuesignService.getContinueSignRcord({ uid: params.uid, scenesign_id: signon.scenesign_id })
           if (!signRecord) { // 无第一次签到时间，默认为新周期第一次访问
             break
@@ -130,7 +130,7 @@ const getSelfSignon = async (params) => {
           let toadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: moment().format('YYYY-MM-DD') })
           if (toadyRecord) { // 今天已经签到
             let totalCount = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signRecord.first_sign_date, end_at: moment().format('YYYY-MM-DD') }) // 新周期开始到今天结束统计的签到次数
-            signon.completeCount = totalCount
+            signon.complete_count = totalCount
             break
           }
           let yearsToday = moment().subtract(1, 'days').format('YYYY-MM-DD')
@@ -141,10 +141,10 @@ const getSelfSignon = async (params) => {
           // (1) 昨天没签到而且昨天不是可补签日期
           // (2) 昨天没签到但是可补签日期 首先查出（a: 从昨天起的连续可补签日期天数) ( b: 昨天到最新签到周期第一天的间隔天数) (c:  昨天到最新签到周期第一天的实际签到天数) （c < b-a）为断签
           if (signon.extra_text && signon.extra_text.resign && signon.extra_text.resign.isResign === 2) { // 支持补签
-            signon.needToResign = 0 // 是否需要补签
+            signon.need_resign = 0 // 是否需要补签
             if ((!yearsToadyRecord && !(signon.extra_text.resign.resignDates.indexOf(yearsToday) >= 0))) { // (昨天没签到而且昨天不是可补签日期)
               // console.log('@断签')
-              signon.completeCount = 0
+              signon.complete_count = 0
             } else if (!yearsToadyRecord && (signon.extra_text.resign.resignDates.indexOf(yearsToday) >= 0)) { // (昨天没签到而且昨天是可补签日期)
               if (signRecord) { // 存在新周期第一次签到
                 let b = moment().subtract(1, 'days').diff(moment(signRecord.first_sign_date), 'days') + 1 // 昨天与新周期第一天的天数差
@@ -160,15 +160,15 @@ const getSelfSignon = async (params) => {
                 let c = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: signRecord.first_sign_date, end_at: yearsToday }) // 新周期开始到昨天结束统计的签到次数
                 if ((b - a) > c) { // 排除可补签日期后， 新周期到昨天实签次数少于排除后的日期，判断为断签
                   // console.log('断签')
-                  signon.completeCount = 0
+                  signon.complete_count = 0
                 } else { // 未断签-可补签
-                  signon.completeCount = c
-                  signon.needToResign = 1 // 需要补签
-                  signon.needToResignDates = []
+                  signon.complete_count = c
+                  signon.need_resign = 1 // 需要补签
+                  signon.need_resign_dates = []
                   for (let n = 0; n < dates.length; n++) {
                     let res = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: dates[n] })
                     if (!res) {
-                      signon.needToResignDates.push(dates[n])
+                      signon.need_resign_dates.push(dates[n])
                     }
                   }
                 }
@@ -177,10 +177,10 @@ const getSelfSignon = async (params) => {
               // 签到新周期初始日期以及上一周期奖励日期
               if (signRecord.last_award_date) { // 存在上一周期奖励日期
                 if (!(moment(signRecord.last_award_date).format('YYYY-MM-DD') === moment().subtract(1, 'days').format('YYYY-MM-DD'))) { // 昨天不是上一周期奖励日期
-                  signon.completeCount = moment().diff(moment(signRecord.first_sign_date), 'days')
+                  signon.complete_count = moment().diff(moment(signRecord.first_sign_date), 'days')
                 }
               } else {
-                signon.completeCount = moment().diff(moment(signRecord.first_sign_date), 'days')
+                signon.complete_count = moment().diff(moment(signRecord.first_sign_date), 'days')
               }
             }
           } else { // 非补签条件下的断签判断
@@ -188,15 +188,15 @@ const getSelfSignon = async (params) => {
               // 签到新周期初始日期以及上一周期奖励日期
               if (signRecord.last_award_date) {
                 if (!(moment(signRecord.last_award_date).format('YYYY-MM-DD') === moment().subtract(1, 'days').format('YYYY-MM-DD'))) { // 昨天不是上一周期奖励日期
-                  signon.completeCount = moment().diff(moment(signRecord.first_sign_date), 'days')
+                  signon.complete_count = moment().diff(moment(signRecord.first_sign_date), 'days')
                 }
               } else {
-                signon.completeCount = moment().diff(moment(signRecord.first_sign_date), 'days')
+                signon.complete_count = moment().diff(moment(signRecord.first_sign_date), 'days')
               }
             } else {
               let todayRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: moment().format('YYYY-MM-DD') })
               if (todayRecord) {
-                signon.completeCount = 1
+                signon.complete_count = 1
               }
             }
           }
@@ -204,7 +204,7 @@ const getSelfSignon = async (params) => {
         case 3: // 累计签到
           let dates = ToolUtil.getPrizeIndex(signon.cycle_text.type, signon.start_at, signon.cycle_text.number) // 最新签到周期到今日时间段
           let signSum = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: dates.startAt, end_at: dates.endAt })
-          signon.completeCount = signSum
+          signon.complete_count = signSum
       }
       validSignons.push(signon)
     }

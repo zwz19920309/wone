@@ -3,6 +3,7 @@ const sceneService = require('../../services/admin/scene-service')
 
 // 获取场景类表
 const getSceneList = async (ctx) => {
+  ctx.cookies.set('cid', 'hello world')
   let { page, pageSize } = ctx.request.body
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
   let sceneList = await sceneService.getSceneList(pageInfo)

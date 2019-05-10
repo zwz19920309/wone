@@ -1,5 +1,7 @@
-const mysql = require('mysql2/promise')
 require('./env')
+const moment = require('moment')
+const mysql = require('mysql2/promise')
+const ToolUtil = require('../../common/utils/tool-util')
 const DataDb = mysql.createPool({
   host: process.env['SIGN_IP'],
   user: process.env['SIGN_USER'],
@@ -54,20 +56,46 @@ class DBHelper {
   }
 
   static async getSceneList(params) {
-    let [rows] = await DataDb.query('SELECT id, name, note, created_at FROM scene limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
+    let [rows] = await DataDb.query('SELECT id, name, note, app_id, app_secret, created_at FROM scene limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(*) as total FROM scene')
     return { total: total[0][0].total, rows: rows }
   }
 
   static async findOneScene(id) {
-    let [rows] = await DataDb.query('SELECT id, name, note FROM scene WHERE id = ? limit 1', [id])
+    let [rows] = await DataDb.query('SELECT id, name, note, app_id, app_secret FROM scene WHERE id = ? limit 1', [id])
     let res = rows.length ? rows[0] : {}
     return res
   }
 
   static async saveScene(params) {
-    let [rows] = await DataDb.query('INSERT INTO SCENE SET ?', [{ name: params.name, note: params.note }])
-    return rows
+    let con = await DataDb.getConnection()
+    let result
+    try {
+      await con.beginTransaction()
+      let [rows] = await DataDb.query('INSERT INTO SCENE SET ?', [{ name: params.name, note: params.note }])
+      result = rows
+      if (result.insertId) {
+        let salt = ToolUtil.randomString(20)
+        let appId = ToolUtil.cryptoPassFunc((result.insertId + salt))
+        let appScrect = ToolUtil.cryptoPassFunc((result.insertId + result.insertId + salt))
+        let [res] = await DataDb.query('update scene SET ?  WHERE id = ?', [{ salt: salt, app_id: appId, app_secret: appScrect }, result.insertId])
+        if (res.affectedRows) {
+          await con.commit()
+          await con.release()
+        } else {
+          await con.rollback()
+          await con.release()
+        }
+      } else {
+        await con.rollback()
+        await con.release()
+      }
+    } catch (e) {
+      await con.rollback()
+      await con.release()
+      throw e
+    }
+    return result
   }
 
   static async updateScene(params) {
@@ -80,11 +108,11 @@ class DBHelper {
     return rows
   }
 
-  static async getSignonById(params) {
-    let [rows] = await DataDb.query('SELECT * FROM signon WHERE id = ? limit 1', [params.id])
-    let res = rows.length ? rows[0] : null
-    return res
-  }
+  // static async getSignonById(params) {
+  //   let [rows] = await DataDb.query('SELECT * FROM signon WHERE id = ? limit 1', [params.id])
+  //   let res = rows.length ? rows[0] : null
+  //   return res
+  // }
 
   static async getSignonList(params) {
     let [rows] = await DataDb.query('SELECT a.id as id, a.name as name, cycle_text, extra_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on (a.checkintype_id = b.id) where a.remove = 0 limit ?, ?', [(params.page - 1) * params.pageSize, params.pageSize])
@@ -94,7 +122,7 @@ class DBHelper {
 
   static async getSignonListInId(params) {
     // let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id in (select distinct signon_id from scene_sign where scene_id = ?)'
-    let sql = 'SELECT a.id as scenesign_id, a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, extra_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0'
+    let sql = 'SELECT a.id as scene_sign_id, a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, extra_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0'
     if (params.page && params.pageSize) {
       sql += '  limit ?,?'
     }
@@ -218,13 +246,13 @@ class DBHelper {
   }
 
   static async bulkSaveAwardRecord(params) {
-    let [rows] = await DataDb.query('INSERT INTO award_record (uid, prize_id, scenesign_id, created_at) VALUES ?', [params])
+    let [rows] = await DataDb.query('INSERT INTO award_record (uid, prize_id, scene_sign_id, created_at) VALUES ?', [params])
     return rows
   }
 
   static async getAwardRecordList(params) {
-    let sql = 'SELECT a.id as record_id, a.uid as uid, a.number as number, a.created_at as created_at, b.name as prize_name, b.note as prize_note, c.id as scenesign_id from award_record a ' +
-      'LEFT JOIN prize b on a.prize_id = b.id LEFT JOIN scene_sign c on c.id = a.scenesign_id'
+    let sql = 'SELECT a.id as record_id, a.uid as uid, a.number as number, a.created_at as created_at, b.name as prize_name, b.note as prize_note, c.id as scene_sign_id from award_record a ' +
+      'LEFT JOIN prize b on a.prize_id = b.id LEFT JOIN scene_sign c on c.id = a.scene_sign_id'
     let [rows] = await DataDb.query((sql + ' limit ?, ?'), [(params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(1) as total from award_record')
     return { total: total[0][0].total, rows: rows }
@@ -254,15 +282,67 @@ class DBHelper {
   }
 
   static async getContinueSignRcord(params) {
-    let [rows] = await DataDb.query('SELECT uid, first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? and uid = ? ', [params.scenesign_id, params.uid])
+    let [rows] = await DataDb.query('SELECT uid, first_sign_date, last_award_date FROM continue_sign WHERE scene_sign_id = ? and uid = ? ', [params.scene_sign_id, params.uid])
     let res = rows.length ? rows[0] : null
     return res
   }
 
   static async getContinueSignRcordByAward(params) {
-    let [rows] = await DataDb.query('SELECT uid, first_sign_date, last_award_date FROM continue_sign WHERE scenesign_id = ? and last_award_date = ? and uid = ?', [params.scenesign_id, params.last_award_date, params.uid])
+    let [rows] = await DataDb.query('SELECT uid, first_sign_date, last_award_date FROM continue_sign WHERE scene_sign_id = ? and last_award_date = ? and uid = ?', [params.scene_sign_id, params.last_award_date, params.uid])
     let res = rows.length ? rows[0] : null
     return res
+  }
+
+  static async getUserAwardListBySceneId(params) {
+    let [rows] = await DataDb.query('SELECT a.uid as uid , a.prize_id as prize_id , a.number as prize_number, a.scene_id as scene_id , b.name as prize_name, icon FROM user_award a LEFT JOIN prize b on a.prize_id = b.id WHERE scene_id = ? and uid = ? limit ?, ?', [params.scene_id, params.uid, (params.page - 1) * params.pageSize, params.pageSize])
+    let total = await DataDb.query('SELECT count(1)  as total FROM user_award a LEFT JOIN prize b on a.prize_id = b.id WHERE scene_id = ? and uid = ? ', [params.scene_id, params.uid])
+    let res = { total: total[0][0].total, rows: rows }
+    return res
+  }
+
+  static async consumeUserAward(params) {
+    let con = await DataDb.getConnection()
+    let result = { flag: 1, msg: 'SUCCESS' }
+    try {
+      await con.beginTransaction()
+      if (params.consumes && params.consumes.length) {
+        for (let ele of params.consumes) {
+          let [rows] = await con.query('SELECT id, uid, prize_id, number FROM user_award  WHERE uid = ? and scene_id = ? and prize_id = ? FOR UPDATE', [params.uid, params.scene_id, ele.prize])
+          if (rows.length) {
+            if (parseInt(ele.type) === 1) {
+              let [res] = await con.query('UPDATE user_award SET number = ' + (rows[0].number + parseInt(ele.number)) + ' where id = ?', [rows[0].id])
+              if (!res.changedRows) {
+                result = { flag: false, msg: '修改数量失败' }
+              }
+            } else if (parseInt(ele.type) === 0) {
+              if (rows[0].number >= ele.number) {
+                let [res] = await con.query('UPDATE user_award SET number = ' + (rows[0].number - parseInt(ele.number)) + ' where id = ?', [rows[0].id])
+                if (!res.changedRows) {
+                  result = { flag: 0, msg: '修改数量失败' }
+                }
+              } else {
+                result = { flag: 0, msg: '奖品数量不足' }
+              }
+            }
+            await await con.query('INSERT INTO award_record SET ?', [{ uid: params.uid, prize_id: ele.prize, number: ele.number, scene_id: params.scene_id, type: ele.type, created_at: moment().format('YYYY-MM-DD') }])
+          } else {
+            result = { flag: 0, msg: '某奖品不存在' }
+          }
+        }
+      }
+      if (result && result.flag) {
+        await con.commit()
+        await con.release()
+      } else {
+        await con.rollback()
+        await con.release()
+      }
+      return result
+    } catch (e) {
+      await con.rollback()
+      await con.release()
+      throw e
+    }
   }
 
   static async userSignonAward(params) {
@@ -270,14 +350,23 @@ class DBHelper {
     try {
       await con.beginTransaction()
       if (params.prizes && params.prizes.length) {
-        await con.query('INSERT INTO award_record (uid, prize_id, number, scenesign_id, created_at) VALUES ?', [params.prizes])
+        for (let ele of params.prizes) {
+          console.log('ele: ', ele)
+          let [rows] = await con.query('SELECT id, uid, prize_id, number FROM user_award  WHERE uid = ? and prize_id = ? and scene_id = ? FOR UPDATE', [ele[0], ele[1], ele[3]])
+          if (rows.length) {
+            await con.query('UPDATE user_award SET number = ' + (rows[0].number + ele[2]) + ' where id = ?', [rows[0].id])
+          } else {
+            await con.query('INSERT INTO user_award SET ?', [{ uid: ele[0], prize_id: ele[1], number: ele[2], scene_id: ele[3], created_at: moment().format('YYYY-MM-DD'), updated_at: moment().format('YYYY-MM-DD') }])
+          }
+        }
+        await con.query('INSERT INTO award_record (uid, prize_id, number, scene_id, created_at, type) VALUES ?', [params.prizes])
       }
       if (params.continueDate.first_sign_date) {
-        let [[total]] = await con.query('SELECT count(1) as total from continue_sign where scenesign_id = ? and uid =?', [params.continueDate.scenesign_id, params.continueDate.uid])
+        let [[total]] = await con.query('SELECT count(1) as total from continue_sign where scene_sign_id = ? and uid =?', [params.continueDate.scene_sign_id, params.continueDate.uid])
         if (total.total) {
-          await con.query('UPDATE continue_sign SET first_sign_date = ? where scenesign_id = ? and uid = ?', [params.continueDate.first_sign_date, params.continueDate.scenesign_id, params.continueDate.uid])
+          await con.query('UPDATE continue_sign SET first_sign_date = ? where scene_sign_id = ? and uid = ?', [params.continueDate.first_sign_date, params.continueDate.scene_sign_id, params.continueDate.uid])
         } else {
-          await con.query('INSERT INTO continue_sign SET ?', [{ uid: params.continueDate.uid, scenesign_id: params.continueDate.scenesign_id, first_sign_date: params.continueDate.first_sign_date }])
+          await con.query('INSERT INTO continue_sign SET ?', [{ uid: params.continueDate.uid, scene_sign_id: params.continueDate.scene_sign_id, first_sign_date: params.continueDate.first_sign_date }])
         }
       }
       await con.query('INSERT INTO sign_record SET ?', [params.record])

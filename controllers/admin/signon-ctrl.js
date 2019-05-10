@@ -1,14 +1,14 @@
-const moment = require('moment')
 const HttpResult = require('../../common/http/http-result')
 const ToolUtil = require('../../common/utils/tool-util')
 const signonService = require('../../services/admin/signon-service')
 const sceneService = require('../../services/admin/scene-service')
 const datetypeService = require('../../services/admin/datetype-service')
 const prizeService = require('../../services/admin/prize-service')
-const signrecordService = require('../../services/admin/signrecord-service')
 
 // 获取签到类型类表
 const getSignonList = async (ctx) => {
+  let data = ctx.cookies.get('cid')
+  console.log('@data: ', data)
   let { page, pageSize } = ctx.request.body
   let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
   let signonList = await signonService.getSignonList(pageInfo)
@@ -88,18 +88,18 @@ const getSignonListBySceneId = async (ctx) => {
 
 // 签到模板批量添加奖品列表
 const bulkAddPrizes = async (ctx) => {
-  let { id, number, prizeId, prizeNum } = ctx.request.body
-  if (!id || !number || !prizeId || !prizeNum) {
+  let { id, number, pid, pnum } = ctx.request.body
+  if (!id || !number || !pid || !pnum) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
   }
   let signon = await signonService.getSignonById({ id: id })
   let prizesText = signon.prizes_text || {}
   if (!prizesText.prizes) {
-    prizesText.prizes = [{ [number]: [{ prizeId: prizeId, prizeNum: prizeNum }] }]
+    prizesText.prizes = [{ [number]: [{ prize_id: pid, prize_num: pnum }] }]
   } else if (!prizesText.prizes[0][number]) {
-    prizesText.prizes[0][number] = [{ prizeId: prizeId, prizeNum: prizeNum }]
+    prizesText.prizes[0][number] = [{ prize_id: pid, prize_num: pnum }]
   } else {
-    prizesText.prizes[0][number] = prizesText.prizes[0][number].concat({ prizeId: prizeId, prizeNum: prizeNum })
+    prizesText.prizes[0][number] = prizesText.prizes[0][number].concat({ prize_id: pid, prize_num: pnum })
   }
   let res = await signonService.upDateSignon({ prizes_text: JSON.stringify(prizesText) }, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
@@ -118,7 +118,7 @@ const bulkDeletePrizes = async (ctx) => {
   }
   prizesText.prizes[0][number].forEach((ele, index) => {
     prizeIds.forEach(pid => {
-      if (ele.prizeId === pid) {
+      if (ele.prize_id === pid) {
         prizesText.prizes[0][number].splice(index, 1)
       }
     })
@@ -142,12 +142,12 @@ const getPrizesBySignonById = async (ctx) => {
     existPrizes = prizesText.prizes[0][number]
     let existIds = []
     existPrizes.forEach(ele => {
-      existIds.push(ele.prizeId)
+      existIds.push(ele.prize_id)
     })
     prizes = await prizeService.getPrizeList(existIds, 1)
     existPrizes.forEach(ele => {
       prizes.rows.forEach(prize => {
-        if (ele.prizeId === prize.id) {
+        if (ele.prize_id === prize.id) {
           ele.prize = prize
           ToolUtil.prefixImgUrl(ele.prize)
         }
@@ -211,58 +211,6 @@ const bulkDeleteConsumes = async (ctx) => {
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')
 }
 
-// 用户当日签到
-const userSignon = async (ctx) => {
-  let { uid, sceneId } = ctx.request.body
-  if (!uid || !sceneId) {
-    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
-  }
-  let nowDate = moment().format('YYYY-MM-DD')
-  let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: sceneId, created_at: nowDate })
-  if (signRecord) {
-    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
-  }
-  let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: moment().format('YYYY-MM-DD HH:mm:ss') })
-  let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: nowDate }, continueDate: pRes.continueSign }
-  pRes.prizes.forEach(prize => {
-    params.prizes.push([uid, prize.prizeId, prize.prizeNum, sceneId, nowDate])
-  })
-  let res = await signrecordService.userSignonAward(params)
-  if (!res) {
-    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
-  }
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: pRes.prizes }, 'SUCCESS')
-}
-// 用户补签
-const reSignon = async (ctx) => {
-  let { uid, resignDate, sceneId } = ctx.request.body
-  if (!uid || !resignDate || !sceneId) {
-    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
-  }
-  let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: sceneId, created_at: resignDate })
-  if (signRecord) {
-    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '该日已签到'))
-  }
-  let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneId, nowDate: resignDate })
-  let params = { prizes: [], record: { uid: uid, scene_id: sceneId, created_at: resignDate }, continueDate: pRes.continueSign }
-  pRes.prizes.forEach(prize => {
-    params.prizes.push([uid, prize.prizeId, prize.prizeNum, sceneId, moment().format('YYYY-MM-DD')])
-  })
-  let res = await signrecordService.userSignonAward(params)
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: res }, 'SUCCESS')
-}
-
-// 用户签到累计信息
-const getSelfSignon = async (ctx) => {
-  let { uid, sceneId } = ctx.request.body
-  if (!uid || !sceneId) {
-    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
-  }
-  let signRecord = await signrecordService.getUserSignRecord({ uid: uid, scene_id: sceneId, created_at: moment().format('YYYY-MM-DD') })
-  let signons = await signrecordService.getSelfSignon({ uid: uid, scene_id: sceneId })
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signons, isSignon: (signRecord ? 1 : 0) }, 'SUCCESS')
-}
-
 module.exports = {
   updateSignonById,
   getSignonList,
@@ -276,8 +224,5 @@ module.exports = {
   bulkDeletePrizes,
   getConsumesBySignonById,
   bulkAddConsumes,
-  bulkDeleteConsumes,
-  userSignon,
-  reSignon,
-  getSelfSignon
+  bulkDeleteConsumes
 }
