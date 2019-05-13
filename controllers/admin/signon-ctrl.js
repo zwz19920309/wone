@@ -25,30 +25,35 @@ const getSignonById = async (ctx) => {
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, signon, 'SUCCESS')
 }
 
-// 增加签到类型
+// 增加签到模板
 const addSignon = async (ctx) => {
   let { name, checkinType, dateType, number, desc, formId, isResign, resignDates, cost, pid } = ctx.request.body
   if (!name || !checkinType || !dateType || !desc || !pid) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
   }
   let dateTypeObj = await datetypeService.getOneDateTypeByCons({ type: dateType })
-  let extraText = (isResign && parseInt(isResign) === 2) ? { resign: { isResign: isResign, formId: formId, cost: cost, resignDates: resignDates || [] } } : {}
+  let extraText = (isResign && parseInt(isResign)) ? { resign: { resign: isResign, form_id: formId, cost: cost, resign_dates: resignDates || [] } } : {}
   let signonData = { platform_id: pid, name: name, checkintype_id: checkinType, rule_desc: desc, cycle_text: JSON.stringify({ type: dateType, name: dateTypeObj[0].name, number: number || 0 }), extra_text: JSON.stringify(extraText) }
   let signon = await signonService.addSignon(signonData)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, signon, 'SUCCESS')
 }
 
-// 更新签到类型
+// 更新签到模板
 const updateSignonById = async (ctx) => {
-  let { id, name, checkinTypeId, dateTypeId, number, ruleDesc } = ctx.request.body
+  let { id, name, checkinType, dateType, number, desc, formId, isResign, resignDates, cost } = ctx.request.body
   if (!id) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
   }
   let signon = await signonService.getSignonById({ id: id })
-  let params = { name: name || signon.name, checkintype_id: checkinTypeId || signon.checkintype_id, rule_desc: ruleDesc || signon.rule_desc }
-  if (dateTypeId) {
-    let dateType = await datetypeService.getDateTypeById({ id: dateTypeId })
-    params.cycle_text = JSON.stringify({ name: dateType.name, number: number || '0', type: parseInt(dateType.id) })
+  let params = { name: name || signon.name, checkintype_id: checkinType || signon.checkintype_id, rule_desc: desc || signon.rule_desc }
+  if (dateType) { // 周期数据
+    let dateTypeObj = await datetypeService.getDateTypeById({ id: dateType })
+    params.cycle_text = JSON.stringify({ name: dateType.name, number: number || '0', type: parseInt(dateTypeObj.id) })
+  }
+  if ((checkinType === 2) && (isResign && parseInt(isResign))) { // 连续签到-可补签
+    params.extra_text = JSON.stringify({ resign: { resign: isResign, form_id: formId, cost: cost, resign_dates: resignDates || [] } })
+  } else {
+    params.extra_text = signon.extra_text || {}
   }
   let result = await signonService.upDateSignonInfo(params, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { res: result }, 'SUCCESS')
@@ -76,11 +81,11 @@ const bulkDeleteSignOn = async (ctx) => {
 
 // 根据场景id获取签到类型类表
 const getSignonListBySceneId = async (ctx) => {
-  let { sceneId, type, page, pageSize } = ctx.request.body
-  if (!sceneId) {
+  let { sceneId, type, page, pageSize, pid } = ctx.request.body
+  if (!sceneId || !pid) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
   }
-  let params = { sceneId: sceneId, page: page || 1, pageSize: pageSize || 10 }
+  let params = { sceneId: sceneId, page: page || 1, pageSize: pageSize || 10, platform_id: pid }
   let scene = await sceneService.findOneScene({ id: sceneId })
   let signonList = (parseInt(type) === 1) ? await signonService.getSignonNotInList(params) : await signonService.getSignonInList(params)
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: signonList.rows, scene: scene, total: signonList.total }, 'SUCCESS')

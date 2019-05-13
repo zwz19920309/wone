@@ -121,18 +121,18 @@ class DBHelper {
 
   static async getSignonListInId(params) {
     // let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id in (select distinct signon_id from scene_sign where scene_id = ?)'
-    let sql = 'SELECT a.id as scene_sign_id, a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, extra_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0'
+    let sql = 'SELECT a.id as scene_sign_id, a.start_at start_at, a.end_at as end_at, b.id as id, b.name as name, rule_desc, cycle_text, prizes_text, extra_text, checkintype_id, c.name as checktypename from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0 and b.platform_id = ?'
     if (params.page && params.pageSize) {
       sql += '  limit ?,?'
     }
-    let [rows] = await DataDb.query(sql, [params.sceneId, (params.page - 1) * params.pageSize, params.pageSize])
+    let [rows] = await DataDb.query(sql, [params.sceneId, params.platform_id, (params.page - 1) * params.pageSize, params.pageSize])
     let total = await DataDb.query('SELECT count(1) as total from scene_sign a LEFT JOIN signon b  on b.id = a.signon_id  LEFT JOIN checkin_type c on b.checkintype_id = c.id WHERE a.scene_id = ? and b.remove = 0', [params.sceneId])
     return { total: total[0][0].total, rows: rows }
   }
 
   static async getSignonListNotInId(params) {
-    let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id not in (select distinct  signon_id from scene_sign where scene_id = ?) and a.remove = 0 limit ?,?'
-    let [rows] = await DataDb.query(sql, [params.sceneId, (params.page - 1) * params.pageSize, params.pageSize])
+    let sql = 'SELECT a.id as id, a.name as name, cycle_text, prizes_text, b.name as checktypename, b.type as checktypetype, rule_desc,  checkintype_id  FROM signon a left join checkin_type b on a.checkintype_id = b.id  where a.id not in (select distinct  signon_id from scene_sign where scene_id = ?) and a.remove = 0  and a.platform_id = ? limit ?,?'
+    let [rows] = await DataDb.query(sql, [params.sceneId, params.platform_id, (params.page - 1) * params.pageSize, params.pageSize])
     return { total: rows.length, rows: rows }
   }
 
@@ -152,7 +152,7 @@ class DBHelper {
   }
 
   static async updateSignonInfo(params, cons) {
-    let [rows] = await DataDb.query('UPDATE signon SET  ? where id = ?', [{ name: params.name, checkintype_id: params.checkintype_id, rule_desc: params.rule_desc, cycle_text: params.cycle_text }, cons.id])
+    let [rows] = await DataDb.query('UPDATE signon SET  ? where id = ?', [{ name: params.name, checkintype_id: params.checkintype_id, rule_desc: params.rule_desc, cycle_text: params.cycle_text, extra_text: params.extra_text }, cons.id])
     return rows
   }
 
