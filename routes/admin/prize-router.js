@@ -2,7 +2,7 @@ const apiRouter = require('koa-router')()
 const prizeCtrl = require('../../controllers/admin/prize-ctrl')
 const authUtil = require('../../common/utils/auth-util')
 // 获取奖品列表
-apiRouter.post('/getPrizeList', prizeCtrl.getPrizeList)
+apiRouter.post('/getPrizeList', authUtil.checkAuth, prizeCtrl.getPrizeList)
 // 添加奖品
 apiRouter.post('/addPrize', prizeCtrl.addPrize)
 // 删除奖品

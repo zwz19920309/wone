@@ -1,4 +1,4 @@
-const rp = require('request')
+const rp = require('request-promise')
 const config = require('../../config/config')
 const getUserInfoByToken = async (token) => {
   // var options = {
@@ -18,7 +18,10 @@ const getUserInfoByToken = async (token) => {
   //   json: true // Automatically parses the JSON string in the response
   // }
   // rp(options)
-  let res = {}
+  let res
+  await rp('https://api.weixin.qq/12312/QQ?appid=' + 31231321 + '&secret=' + 21312312 + '&code=' + 123123 + '&grant_type=authorization_code').then((result, err) => {
+    res = JSON.parse(result)
+  })
   return res
 }
 
