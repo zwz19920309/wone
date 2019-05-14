@@ -1,6 +1,6 @@
 const DBHelper = require('../../common/db/db-helper')
 /**
-  * 获取日期类型列表
+  * 获取平台列表
   * @method getPlatFormList
   * @param  {object} params - 参数
   * @return {object}
@@ -16,23 +16,11 @@ const getPlatFormList = async (params) => {
   * @return {object} 增加结果
  */
 const addPlatForm = async (params) => {
-  let result = await DBHelper.savePrize(params)
+  let result = await DBHelper.addPlatForm(params)
   return result
-}
-
-/**
-  * 获取日期类型列表
-  * @method getPlatFormList
-  * @param  {object} params - 参数
-  * @return {object}
- */
-const getPlatFormById = async (params) => {
-  let platFormList = await DBHelper.getPlatFormById(params)
-  return platFormList
 }
 
 module.exports = {
   getPlatFormList,
-  getPlatFormById,
   addPlatForm
 }

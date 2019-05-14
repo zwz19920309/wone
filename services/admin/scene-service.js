@@ -17,7 +17,7 @@ const getSceneList = async (params) => {
   * @return {object} 场景列表
  */
 const findOneScene = async (params) => {
-  let sceneList = await DBHelper.findOneScene(params.id)
+  let sceneList = await DBHelper.findOneScene(params)
   return sceneList
 }
 

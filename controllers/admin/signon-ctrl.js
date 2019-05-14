@@ -53,7 +53,7 @@ const updateSignonById = async (ctx) => {
   if ((checkinType === 2) && (isResign && parseInt(isResign))) { // 连续签到-可补签
     params.extra_text = JSON.stringify({ resign: { resign: isResign, form_id: formId, cost: cost, resign_dates: resignDates || [] } })
   } else {
-    params.extra_text = signon.extra_text || {}
+    params.extra_text = JSON.stringify(signon.extra_text || {})
   }
   let result = await signonService.upDateSignonInfo(params, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { res: result }, 'SUCCESS')

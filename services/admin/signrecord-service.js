@@ -43,7 +43,8 @@ const getSumUserSignRcord = async (params) => {
  */
 const getTodaySignonPrizes = async (params) => {
   let signonList = await DBHelper.getSignonListInId({ sceneId: params.scene_id })
-  let result = { prizes: [], continueSign: { uid: params.uid, first_sign_date: '', last_award_date: '' } }
+  // let result = { prizes: [], continueSign: { uid: params.uid, first_sign_date: '', last_award_date: '' } }
+  let res = []
   for (let m = 0; m < signonList.rows.length; m++) {
     let signon = signonList.rows[m]
     let startAt = moment(signon.start_at).valueOf()
@@ -54,7 +55,7 @@ const getTodaySignonPrizes = async (params) => {
         case 1:
           let p = signon.prizes_text ? (signon.prizes_text.prizes[0] ? (signon.prizes_text.prizes[0][1] ? signon.prizes_text.prizes[0][1] : 0) : 0) : 0
           if (p) {
-            result.prizes = result.prizes.concat(p)
+            res.push({ prizes: p, type: 1 })
           }
           break
         case 2:
@@ -63,7 +64,7 @@ const getTodaySignonPrizes = async (params) => {
           let yearsToadyRecord = await DBHelper.getUserSignRecord({ uid: params.uid, scene_id: params.scene_id, created_at: yearsToday })
           if (yearsToadyRecord) { // 未断签
             // 签到新周期初始日期以及上一周期奖励日期
-            let signRecord = await continuesignService.getContinueSignRcord({ uid: params.uid, scenesign_id: signon.scenesign_id })
+            let signRecord = await continuesignService.getContinueSignRcord({ uid: params.uid, scene_sign_id: signon.scene_sign_id })
             if (signRecord) {
               if (signRecord.last_award_date) {
                 if (!(moment(signRecord.last_award_date).format('YYYY-MM-DD') === moment(params.nowDate).subtract(1, 'days').format('YYYY-MM-DD'))) {
@@ -74,22 +75,33 @@ const getTodaySignonPrizes = async (params) => {
               }
             }
           }
-          if ((index === 1) || (index === signon.cycle_text.number)) { // 新周期第一次签到日期 以及 上一期介素结束日
-            index === 1 ? result.continueSign.first_sign_date = moment(params.nowDate).format('YYYY-MM-DD') : result.continueSign.last_award_date = moment(params.nowDate).format('YYYY-MM-DD')
-            result.continueSign.scenesign_id = signon.scenesign_id
-          }
           let ps = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][index] ? signon.prizes_text.prizes[0][index] : [] : []) : []
-          result.prizes = result.prizes.concat(ps)
+          let pdata = { prizes: ps, type: 2, continue: { uid: params.uid, first_sign_date: '', last_award_date: '', scene_sign_id: signon.scene_sign_id } }
+          if ((index === 1) || (index === signon.cycle_text.number)) { // 新周期第一次签到日期 以及 上一期介素结束日
+            index === 1 ? pdata.continue.first_sign_date = moment(params.nowDate).format('YYYY-MM-DD') : pdata.continue.last_award_date = moment(params.nowDate).format('YYYY-MM-DD')
+          }
+          res.push(pdata)
           break
         case 3:
           let dates = ToolUtil.getPrizeIndex(signon.cycle_text.type, signon.start_at, signon.cycle_text.number) // 最新签到周期到今日时间段
           let nIndex = await DBHelper.getSumUserSignRcord({ uid: params.uid, scene_id: params.scene_id, start_at: dates.startAt, end_at: dates.endAt })
           nIndex = nIndex + 1
           let lps = signon.prizes_text ? (signon.prizes_text.prizes[0] ? signon.prizes_text.prizes[0][nIndex] ? signon.prizes_text.prizes[0][nIndex] : [] : []) : []
-          result.prizes = result.prizes.concat(lps)
+          res.push({ prizes: lps, type: 3 })
       }
     }
   }
+  let result = { prizes: [], continues: [] }
+  res.forEach(ele => {
+    if (ele.prizes.length) {
+      result.prizes = result.prizes.concat(ele.prizes)
+    }
+    if (ele.continue) {
+      if ((ele.continue.first_sign_date || ele.continue.last_award_date)) {
+        result.continues.push(ele.continue)
+      }
+    }
+  })
   return result
 }
 /**
@@ -123,7 +135,7 @@ const getSelfSignon = async (params) => {
           break
         case 2: // 连续签到
           signon.complete_count = 0
-          let signRecord = await continuesignService.getContinueSignRcord({ uid: params.uid, scenesign_id: signon.scenesign_id })
+          let signRecord = await continuesignService.getContinueSignRcord({ uid: params.uid, scene_sign_id: signon.scene_sign_id })
           if (!signRecord) { // 无第一次签到时间，默认为新周期第一次访问
             break
           }

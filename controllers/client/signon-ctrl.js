@@ -11,11 +11,11 @@ const userSignon = async (ctx) => {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '今日已签到'))
   }
   let pRes = await signrecordService.getTodaySignonPrizes({ uid: uid, scene_id: sceneid, nowDate: moment().format('YYYY-MM-DD HH:mm:ss') })
-  let params = { prizes: [], record: { uid: uid, scene_id: sceneid, created_at: nowDate }, continueDate: pRes.continueSign }
+  let params = { prizes: [] }
   pRes.prizes.forEach(prize => {
-    params.prizes.push([uid, prize.prize_id, prize.prize_num, sceneid, nowDate, 1])
+    params.prizes.push([uid, prize.prize_id, parseInt(prize.prize_num), sceneid, nowDate, 1])
   })
-  let res = await signrecordService.userSignonAward(params)
+  let res = await signrecordService.userSignonAward({ prizes: params.prizes, continues: pRes.continues, record: { uid: uid, scene_id: sceneid, created_at: nowDate } })
   if (!res) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_DB, null, '操作异常'))
   }
