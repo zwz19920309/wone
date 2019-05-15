@@ -2,7 +2,7 @@ const apiRouter = require('koa-router')()
 const signonCtrl = require('../../controllers/admin/signon-ctrl')
 const authUtil = require('../../common/utils/auth-util')
 // 签到模板列表
-apiRouter.post('/getSignonList', signonCtrl.getSignonList)
+apiRouter.post('/getSignonList', authUtil.checkAuth, signonCtrl.getSignonList)
 // 增加签到模板
 apiRouter.post('/addSignon', signonCtrl.addSignon)
 // 删除模板
@@ -29,5 +29,5 @@ apiRouter.post('/bulkAddConsumes', signonCtrl.bulkAddConsumes)
 apiRouter.post('/bulkDeleteConsumes', signonCtrl.bulkDeleteConsumes)
 // 用户签到
 module.exports = router => {
-  router.use('/admin/signon', apiRouter.routes(), apiRouter.allowedMethods())
+  router.use('/admin/signon', authUtil.checkAuth, apiRouter.routes(), apiRouter.allowedMethods())
 }

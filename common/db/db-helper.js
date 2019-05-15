@@ -175,16 +175,16 @@ class DBHelper {
     return { total: total[0][0].total, rows: rows }
   }
 
-  static async getPrizeListNotInId(prizesId) {
-    let sql = 'select id, name, note, icon FROM prize where id not in (?)'
-    let [rows] = await DataDb.query(sql, [prizesId])
-    return { rows: rows }
+  static async getPrizeListNotInId(params) {
+    let [rows] = await DataDb.query('select id, name, note, icon FROM prize where id not in (?) and platform_id = ? limit ?, ?', [params.prize_ids, params.platform_id, (params.page - 1) * params.pageSize, params.pageSize])
+    let total = await DataDb.query('select count(1) as total FROM prize where id not in (?) and platform_id = ?', [params.prize_ids, params.platform_id])
+    return { total: total[0][0].total, rows: rows }
   }
 
-  static async getPrizeListInId(prizesId) {
-    let sql = 'select id, name, note, icon FROM prize where id in (?)'
-    let [rows] = await DataDb.query(sql, [prizesId])
-    return { rows: rows }
+  static async getPrizeListInId(params) {
+    let [rows] = await DataDb.query('select id, name, note, icon FROM prize where id in (?)', [params.prize_ids, (params.page - 1) * params.pageSize, params.pageSize])
+    let total = await DataDb.query('select count(1) as total FROM prize where id  in (?)', [params.prize_ids])
+    return { total: total[0][0].total, rows: rows }
   }
 
   static async savePrize(params) {

@@ -149,7 +149,7 @@ const getPrizesBySignonById = async (ctx) => {
     existPrizes.forEach(ele => {
       existIds.push(ele.prize_id)
     })
-    prizes = await prizeService.getPrizeList(existIds, 1)
+    prizes = await prizeService.getPrizeListInId({ prize_ids: existIds })
     existPrizes.forEach(ele => {
       prizes.rows.forEach(prize => {
         if (ele.prize_id === prize.id) {
@@ -164,37 +164,55 @@ const getPrizesBySignonById = async (ctx) => {
 
 // 通过id,number, type获取模板的可选择礼品列表
 const getConsumesBySignonById = async (ctx) => {
-  let { id, date, type, page, pageSize } = ctx.request.body
-  let signon = await signonService.getSignonById({ id: id })
-  let extraText = signon.extra_text || {}
-  let consumes = { rows: [], count: 0 }
-  let pageInfo = { page: page || 1, pageSize: pageSize || 10 }
-  if (extraText.consumes && extraText.consumes[0] && extraText.consumes[0][date] && extraText.consumes[0][date].length) {
-    let existIds = await extraText.consumes[0][date]
-    let pType = parseInt(type)
-    consumes = await prizeService.getPrizeList(existIds, pType)
-  } else {
-    if (parseInt(type) === 1) {
-      consumes = await prizeService.getPrizeList(pageInfo)
-    }
-  }
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: consumes.rows, total: consumes.total }, 'SUCCESS')
-}
-
-// 签到模板批量添加消耗奖品列表
-const bulkAddConsumes = async (ctx) => {
-  let { id, date, prizeIds } = ctx.request.body
-  if (!id || !date || !prizeIds) {
+  let { id, date } = ctx.request.body
+  if (!id || !date) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
   }
   let signon = await signonService.getSignonById({ id: id })
   let extraText = signon.extra_text || {}
+  let consumes = { rows: [], count: 0 }
+  let existPrizes = []
+  if (extraText.consumes && extraText.consumes[0] && extraText.consumes[0][date] && extraText.consumes[0][date].length) {
+    existPrizes = extraText.consumes[0][date]
+    let existIds = []
+    existPrizes.forEach(ele => {
+      existIds.push(ele.prize_id)
+    })
+    consumes = await prizeService.getPrizeListInId({ prize_ids: existIds })
+    existPrizes.forEach(ele => {
+      consumes.rows.forEach(prize => {
+        if (ele.prize_id === prize.id) {
+          ele.prize = prize
+          ToolUtil.prefixImgUrl(ele.prize)
+        }
+      })
+    })
+  }
+  ToolUtil.prefixImgUrl(consumes.rows)
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: existPrizes, total: existPrizes.length }, 'SUCCESS')
+}
+
+// 签到模板批量添加消耗奖品列表
+const bulkAddConsumes = async (ctx) => {
+  let { id, date, prid, pnum } = ctx.request.body
+  if (!id || !date || !prid) {
+    return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
+  }
+  let signon = await signonService.getSignonById({ id: id })
+  let extraText = signon.extra_text || {}
+
+  //   prizesText.prizes = [{ [number]: [{ prize_id: pid, prize_num: pnum }] }]
+  // } else if (!prizesText.prizes[0][number]) {
+  //   prizesText.prizes[0][number] = [{ prize_id: pid, prize_num: pnum }]
+  // } else {
+  //   prizesText.prizes[0][number] = prizesText.prizes[0][number].concat({ prize_id: pid, prize_num: pnum })
+
   if (!extraText.consumes) {
-    extraText.consumes = [{ [date]: prizeIds }]
+    extraText.consumes = [{ [date]: [{ prize_id: prid, prize_num: pnum }] }]
   } else if (!extraText.consumes[0][date]) {
-    extraText.consumes[0][date] = prizeIds
+    extraText.consumes[0][date] = [{ prize_id: prid, prize_num: pnum }]
   } else {
-    extraText.consumes[0][date] = extraText.consumes[0][date].concat(prizeIds)
+    extraText.consumes[0][date] = extraText.consumes[0][date].concat({ prize_id: prid, prize_num: pnum })
   }
   let res = await signonService.upDateSignonConsums({ extraText: JSON.stringify(extraText) }, { id: id })
   ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, res, 'SUCCESS')

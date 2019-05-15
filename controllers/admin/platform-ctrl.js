@@ -3,6 +3,7 @@ const platformService = require('../../services/admin/platform-service')
 
 // 获取平台列表
 const getPlatFormList = async (ctx) => {
+  let { user } = ctx.request.body
   let platformList = await platformService.getPlatFormList()
   platformList.forEach((platform, index) => {
     platform.index = '1-' + (index + 1)
@@ -13,7 +14,7 @@ const getPlatFormList = async (ctx) => {
       { index: (platform.index + '-4'), path: 'awardRecordList?platformId=' + platform.id, name: '奖励记录' }
     ]
   })
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: platformList }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: platformList, user: user }, 'SUCCESS')
 }
 
 // 获取平台列表

@@ -3,9 +3,9 @@ const sceneService = require('../../services/admin/scene-service')
 
 // 获取场景类表
 const getSceneList = async (ctx) => {
-  let { pid, page, pageSize } = ctx.request.body
+  let { pid, page, pageSize, token } = ctx.request.body
   let sceneList = await sceneService.getSceneList({ page: page || 1, pageSize: pageSize || 1, platform_id: pid })
-  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: sceneList.rows, total: sceneList.total }, 'SUCCESS')
+  ctx.body = HttpResult.response(HttpResult.HttpStatus.SUCCESS, { list: sceneList.rows, total: sceneList.total, token: token }, 'SUCCESS')
 }
 
 // 增加场景
