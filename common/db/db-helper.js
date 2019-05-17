@@ -314,8 +314,25 @@ class DBHelper {
     return rows
   }
 
+  static async findOnePlatForm(params) {
+    let [rows] = await DataDb.query('select id, name from platform WHERE id = ? limit 1', [params.id])
+    let res = rows.length ? rows[0] : null
+    return res
+  }
+
   static async addPlatForm(params) {
     let [rows] = await DataDb.query('INSERT INTO platform SET ?', [{ name: params.name }])
+    return rows
+  }
+
+  static async updatePlatForm(params) {
+    let [rows] = await DataDb.query('update platform SET ? WHERE id = ?', [{ name: params.name }, params.id])
+    return rows
+  }
+
+  static async bulkDetelePlatForm(params) {
+    let [rows] = await DataDb.query('delete from platform WHERE id in (?)', [params.ids])
+    //  await DataDb.query('DELETE FROM scene_sign WHERE signon_id in (?) and scene_id = ?', [params.signonIds, params.sceneId])
     return rows
   }
 

@@ -5,7 +5,8 @@ const authUtil = require('../../common/utils/auth-util')
 apiRouter.post('/getPlatFormList', platformCtrl.getPlatFormList)
 // 添加平台类型
 apiRouter.post('/addPlatForm', platformCtrl.addPlatForm)
-
+// 更新平台信息
+apiRouter.post('/updatePlatForm', platformCtrl.updatePlatForm)
 module.exports = router => {
   router.use('/admin/platform', authUtil.checkAuth, apiRouter.routes(), apiRouter.allowedMethods())
 }
