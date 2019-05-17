@@ -60,5 +60,5 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 })
 app.listen(process.env.PORT || 80)
-console.log('OT App started at port 8080...')
+console.log('OT App started at port 80...')
 module.exports = app
