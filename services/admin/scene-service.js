@@ -21,6 +21,19 @@ const findOneScene = async (params) => {
   return sceneList
 }
 
+// findOneSceneByAppId
+
+/**
+  * 获取场景列表
+  * @method getSceneList
+  * @param  {object} params - 参数
+  * @return {object} 场景列表
+ */
+const findOneSceneByAppId = async (params) => {
+  let sceneList = await DBHelper.findOneSceneByAppId(params)
+  return sceneList
+}
+
 /**
   * 增加场景
   * @method addScene
@@ -59,5 +72,6 @@ module.exports = {
   addScene,
   bulkDeleteScene,
   updateScene,
-  findOneScene
+  findOneScene,
+  findOneSceneByAppId
 }

@@ -64,8 +64,14 @@ class DBHelper {
   }
 
   static async findOneScene(params) {
+    let [rows] = await DataDb.query('SELECT id, name, note, app_id, app_secret FROM scene WHERE id = ? limit 1', [params.id])
+    let res = rows.length ? rows[0] : null
+    return res
+  }
+
+  static async findOneSceneByAppId(params) {
     let [rows] = await DataDb.query('SELECT id, name, note, app_id, app_secret FROM scene WHERE app_id = ? and app_secret = ? limit 1', [params.app_id, params.app_secret])
-    let res = rows.length ? rows[0] : {}
+    let res = rows.length ? rows[0] : null
     return res
   }
 
@@ -74,7 +80,7 @@ class DBHelper {
     let result
     try {
       await con.beginTransaction()
-      let [rows] = await DataDb.query('INSERT INTO SCENE SET ?', [{ name: params.name, note: params.note, platform_id: params.platform_id }])
+      let [rows] = await DataDb.query('INSERT INTO scene SET ?', [{ name: params.name, note: params.note, platform_id: params.platform_id }])
       result = rows
       if (result.insertId) {
         let appId = randomString.generate({ length: 20, charset: 'alphabetic' })
@@ -105,7 +111,7 @@ class DBHelper {
   }
 
   static async bulkDeleteScene(params) {
-    let [rows] = await DataDb.query('DELETE FROM SCENE WHERE id in (?)', [params.ids])
+    let [rows] = await DataDb.query('DELETE FROM scene WHERE id in (?)', [params.ids])
     return rows
   }
 

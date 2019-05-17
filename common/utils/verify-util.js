@@ -6,7 +6,7 @@ const verify = async (ctx, next) => {
   if (!uid || !appid || !appsecret) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, '参数缺失'))
   }
-  let scene = await sceneService.findOneScene({ app_id: appid, app_secret: appsecret })
+  let scene = await sceneService.findOneSceneByAppId({ app_id: appid, app_secret: appsecret })
   if (!scene) {
     return (ctx.body = HttpResult.response(HttpResult.HttpStatus.ERROR_PARAMS, null, 'appid, appsecret不合法'))
   }
